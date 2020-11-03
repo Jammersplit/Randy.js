@@ -7,6 +7,7 @@ This collection consists of a handful of fairly simple helper functions, that ma
 
 ## Reference
 
+### coinToss()
 ```javascript
 //returns true or false randomly
 //optional parameter to set probability of true results (0–1)
