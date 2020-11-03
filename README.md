@@ -14,13 +14,13 @@ function coinToss(trueProbability = 0.5) { }
 
 Return `true` or `false` randomly. Optional parameter `trueProbability` to set likelihood of `true` result (defaults to `0.5`, meaning equal probability).
 
-Use
+#### Use
 ```javascript
 //do or don't, equally likely
 if(coinToss()) {
   //…
 }
 
-//very likely true, but rarely false
+//mostly true, but rarely false
 let choice = coinToss(0.9);
 ```
