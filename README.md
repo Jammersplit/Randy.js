@@ -24,3 +24,7 @@ if(coinToss()) {
 //mostly true, but rarely false
 let choice = coinToss(0.9);
 ```
+
+### coinToss(headsValue, tailsValue)
+
+### Advanced use
