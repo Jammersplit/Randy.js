@@ -26,5 +26,21 @@ let choice = coinToss(0.9);
 ```
 
 ### coinToss(headsValue, tailsValue)
+```javascript
+function coinToss(headsValue, tailsValue, headsProbability = 0.5) { }
+```
+
+Like `coinToss()` with custom return values. Returns `headsValue` or `tailsValue` randomly. Optional parameter `headsProbability` to set likelihood of first output value (defaults to `0.5`, meaning equal probability).
+
+#### Use
+```javascript
+//do or don't, equally likely
+if(coinToss()) {
+  //…
+}
+
+//mostly true, but rarely false
+let choice = coinToss(0.9);
+```
 
 ### Advanced use
