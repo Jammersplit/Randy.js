@@ -58,6 +58,6 @@ let rotation = plusMinusOne() * 45;
 
 ### Advanced Examples
 ```javascript
-//Randomly return either 0 or a random value between -1 and 1
+//Return either exactly 0 or a random value between -1 and 1, both equally likely
 let result = randomSelect([0, randomBetween(-1,1)]);
 ```
