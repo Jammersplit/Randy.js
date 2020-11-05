@@ -48,9 +48,15 @@ let choice = coinToss(0.9);
 function plusMinusOne(plusProbability = 0.5) { }
 ```
 
-This is equal to `coinToss(1, -1)`, meaning it returns `+1` or `-1` randomly. Optional parameter `plusProbability` to set likelihood of returning `+1` (defaults to `0.5`, meaning equal probability). I found it particularly helpful for geometric operations, when you want to flip orientations of some shape, axis, model etc.
+Same as `coinToss(1, -1)`, meaning it returns `+1` or `-1` randomly. Optional parameter `plusProbability` to set likelihood of returning `+1` (defaults to `0.5`, meaning equal probability). I found it particularly helpful for geometric operations, e.g. to flip orientations of some shape, axis, model. That's why I made it into a dedicated function.
 
-### Advanced uses
+#### Use
+```javascript
+//set rotation angle to either 45 or -45
+let rotation = plusMinusOne() * 45;
+```
+
+### Advanced Examples
 ```javascript
 //Randomly return either 0 or a random value between -1 and 1
 let result = randomSelect([0, randomBetween(-1,1)]);
