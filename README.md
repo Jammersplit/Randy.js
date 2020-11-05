@@ -1,9 +1,9 @@
-# randoms
-A collection of simple helper functions for generating random results. Written in Javascript, but easily adaptable to other languages. These all use the native Math.random() function in Javascript.
+# Randy
+A collection of simple javascript functions for generating more versatile and useful random results.
 
-Working with the bare random function in programming rarely leads to much interesting results. Often you need to randomly generate quite specific values, toggle some events randomly, or want to have more control over the probability of certain random results.
+Working with the bare random function in programming rarely leads to much interesting results. Often you need to randomly generate quite specific values, toggle some events randomly, or want to have more control over the probability of certain random results. This is helpful for instance in creating generative forms with controlled random parameters in parametric visual or 3D design, generally in situations where decisions and options should be chosen randomly, or where exceptions and outliers should be introduced intentionally in a process.
 
-This collection consists of a handful of fairly simple helper functions, that make it a bit easier to handle such cases and to create more interesting and nuanced randomness. It's helpful in parametric visual or 3D design in creating generative forms with controlled random parameters, other situations where decision trees and options should be chosen randomly, or where exceptions and outliers should be introduced in a process.
+This collection consists of a handful of fairly simple helper functions written in javascript, that make it a bit easier to handle such cases for creating more useful and interesting randomness. The examples all use the native Math.random() function in javascript, but the code is easily adaptable to other languages.
 
 ## Reference
 
@@ -43,4 +43,15 @@ if(coinToss()) {
 let choice = coinToss(0.9);
 ```
 
-### Advanced use
+### plusMinusOne()
+```javascript
+function plusMinusOne(plusProbability = 0.5) { }
+```
+
+This is equal to `coinToss(1, -1)`, meaning it returns `+1` or `-1` randomly. Optional parameter `plusProbability` to set likelihood of returning `+1` (defaults to `0.5`, meaning equal probability). I found it particularly helpful for geometric operations, when you want to flip orientations of some shape, axis, model etc.
+
+### Advanced uses
+```javascript
+//Randomly return either 0 or a random value between -1 and 1
+let result = randomSelect([0, randomBetween(-1,1)]);
+```
