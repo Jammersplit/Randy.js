@@ -64,7 +64,7 @@ The optional parameter `stepSize` allows to limit or *round* the returned result
 //
 ```
 
-### Advanced Examples
+## Advanced Examples
 ```javascript
 //Return either exactly 0 or a random value between -1 and 1
 let result = randomSelect([0, randomBetween(-1,1)]);
