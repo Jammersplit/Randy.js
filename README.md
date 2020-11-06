@@ -14,8 +14,8 @@ function coinToss(trueProbability = 0.5) { }
 
 Return `true` or `false` randomly. Optional parameter `trueProbability` to set likelihood of `true` result (defaults to `0.5`, meaning equal probability).
 
-#### Use
 ```javascript
+//EXAMPLE
 //do or don't, equally likely
 if(coinToss()) {
   //…
@@ -32,9 +32,8 @@ function coinToss(headsValue, tailsValue, headsProbability = 0.5) { }
 
 Like `coinToss()`, but with custom return values. Returns `headsValue` or `tailsValue` randomly. Optional parameter `headsProbability` to set likelihood of first output value (defaults to `0.5`, meaning equal probability).
 
-#### Use
 ```javascript
-//
+//EXAMPLE
 ```
 
 ### plusMinusOne()
@@ -44,8 +43,8 @@ function plusMinusOne(plusProbability = 0.5) { }
 
 Same as `coinToss(1, -1)`, meaning it returns `+1` or `-1` randomly. Optional parameter `plusProbability` to set likelihood of returning `+1` (defaults to `0.5`, meaning equal probability). I found it particularly helpful for geometric operations, e.g. to flip orientations of some shape, axis, model. That's why I made it into a dedicated function.
 
-#### Use
 ```javascript
+//EXAMPLE
 //set rotation angle to either 45 or -45
 let rotation = plusMinusOne() * 45;
 ```
@@ -59,8 +58,8 @@ Returns a random float number between `minValue` and `maxValue`. Results can be 
 
 The optional parameter `stepSize` allows to limit or *round* the returned results to fixed intervals. For instance, `randomBetween(0, 1, 0.2)` would only return the values `0, 0.2, 0.4, 0.6 and 0.8` (again, results always below `maxValue`). The interval is always starting from the `minValue` up to the `maxValue`. The parameter should be non-negative. The default value is `0`, meaning all float values between the limits can be returned. 
 
-#### Use
 ```javascript
+//EXAMPLE
 //generate a random rotation angle between 0 and 360 degrees
 let rotation = randomBetween(0, 360);
 
