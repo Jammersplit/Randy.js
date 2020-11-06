@@ -34,13 +34,7 @@ Like `coinToss()`, but with custom return values. Returns `headsValue` or `tails
 
 #### Use
 ```javascript
-//do or don't, equally likely
-if(coinToss()) {
-  //…
-}
-
-//mostly true, but rarely false
-let choice = coinToss(0.9);
+//
 ```
 
 ### plusMinusOne()
@@ -54,6 +48,20 @@ Same as `coinToss(1, -1)`, meaning it returns `+1` or `-1` randomly. Optional pa
 ```javascript
 //set rotation angle to either 45 or -45
 let rotation = plusMinusOne() * 45;
+```
+
+### randomBetween(minValue, maxValue)
+```javascript
+function randomBetween(minValue, maxValue, stepSize = 0) { }
+```
+
+Returns a random float number between `minValue` and `maxValue`. Results can be equal to `minValue` but are always lower than `maxValue`. This is a basic function to map `Math.random()` (which returns values from 0 to 1) to other ranges.
+
+The optional parameter `stepSize` allows to limit or *round* the returned results to fixed intervals. For instance, `randomBetween(0, 1, 0.2)` would only return the values `0, 0.2, 0.4, 0.6 and 0.8` (again, results always below `maxValue`). The interval is always starting from the `minValue` up to the `maxValue`.
+
+#### Use
+```javascript
+//
 ```
 
 ### Advanced Examples
