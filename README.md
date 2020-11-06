@@ -61,7 +61,11 @@ The optional parameter `stepSize` allows to limit or *round* the returned result
 
 #### Use
 ```javascript
-//
+//generate a random rotation angle between 0 and 360 degrees
+let rotation = randomBetween(0, 360);
+
+//generate a proper price amount from 5 to 10 dollars, in cent steps
+let price = randomBetween(5, 10, 0.01) + "$";
 ```
 
 ## Advanced Examples
