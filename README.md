@@ -16,7 +16,7 @@ function coinToss(trueProbability = 0.5) { }
 
 Return either `true` or `false` randomly.
 
-Optional parameter `trueProbability` to set likelihood of `true` result. Expects a value between `0` and `1` (clamps lower and higher values to that range). `0` returns never `true`, `1` returns always `true`. Defaults to `0.5`, meaning equal probability.
+Optional parameter `trueProbability` to set likelihood of returning `true`. Expects a value between `0` and `1` (clamps lower and higher values to that range). `0` returns never `true`, `1` returns always `true`. Defaults to `0.5`, meaning equal probability.
 
 ```javascript
 //EXAMPLE
@@ -36,7 +36,7 @@ function coinToss(headsValue, tailsValue, headsProbability = 0.5) { }
 
 Identical to `coinToss()`, but with two custom return values. Returns either `headsValue` or `tailsValue` randomly.
 
-Optional parameter `headsProbability` to set likelihood of `headsValue` result, analog to `coinToss()` above.
+Optional parameter `headsProbability` to set likelihood of returning `headsValue`, analog to `coinToss()` above.
 
 ```javascript
 //EXAMPLE
@@ -47,7 +47,11 @@ Optional parameter `headsProbability` to set likelihood of `headsValue` result, 
 function plusMinusOne(plusProbability = 0.5) { }
 ```
 
-Same as `coinToss(1, -1)`, meaning it returns `+1` or `-1` randomly. Optional parameter `plusProbability` to set likelihood of returning `+1` (defaults to `0.5`, meaning equal probability). I found it particularly helpful for geometric operations, e.g. to flip orientations of some shape, axis, model. That's why I made it into a dedicated function.
+Identical to `coinToss(1, -1)`. Returns either `+1` or `-1` randomly.
+
+Optional parameter `plusProbability` to set likelihood of returning positive `1`, analog to `coinToss()` above.
+
+Particularly helpful for geometric operations, e.g. to flip orientations of some shape, axis, model etc. That's why it is a dedicated function with a more descriptive name.
 
 ```javascript
 //EXAMPLE
