@@ -30,7 +30,7 @@ let choice = coinToss(0.9);
 function coinToss(headsValue, tailsValue, headsProbability = 0.5) { }
 ```
 
-Like `coinToss()`, but with custom return values. Returns `headsValue` or `tailsValue` randomly. Optional parameter `headsProbability` to set likelihood of first output value (defaults to `0.5`, meaning equal probability).
+Identical to `coinToss()`, but with two custom return values. Returns either `headsValue` or `tailsValue` randomly. Optional parameter `headsProbability` to set likelihood of `headsValue` result.
 
 ```javascript
 //EXAMPLE
