@@ -14,7 +14,9 @@ The functions use the native `Math.random()` function in javascript. But the cod
 function coinToss(trueProbability = 0.5) { }
 ```
 
-Return either `true` or `false` randomly. Optional parameter `trueProbability` to set likelihood of `true` result. Use a value between `0` and `1`. `0` returns never `true`, `1` returns always `true`. Defaults to `0.5`, meaning equal probability.
+Return either `true` or `false` randomly.
+
+Optional parameter `trueProbability` to set likelihood of `true` result. Use a value between `0` and `1`. `0` returns never `true`, `1` returns always `true`. Defaults to `0.5`, meaning equal probability.
 
 ```javascript
 //EXAMPLE
@@ -32,7 +34,9 @@ let choice = coinToss(0.9);
 function coinToss(headsValue, tailsValue, headsProbability = 0.5) { }
 ```
 
-Identical to `coinToss()`, but with two custom return values. Returns either `headsValue` or `tailsValue` randomly. Optional parameter `headsProbability` to set likelihood of `headsValue` result.
+Identical to `coinToss()`, but with two custom return values. Returns either `headsValue` or `tailsValue` randomly.
+
+Optional parameter `headsProbability` to set likelihood of `headsValue` result, analog to `coinToss()` above.
 
 ```javascript
 //EXAMPLE
