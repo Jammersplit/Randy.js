@@ -16,7 +16,7 @@ function coinToss(trueProbability = 0.5) { }
 
 Return either `true` or `false` randomly.
 
-Optional parameter `trueProbability` to set likelihood of `true` result. Use a value between `0` and `1`. `0` returns never `true`, `1` returns always `true`. Defaults to `0.5`, meaning equal probability.
+Optional parameter `trueProbability` to set likelihood of `true` result. Expects a value between `0` and `1` (clamps lower and higher values to that range). `0` returns never `true`, `1` returns always `true`. Defaults to `0.5`, meaning equal probability.
 
 ```javascript
 //EXAMPLE
