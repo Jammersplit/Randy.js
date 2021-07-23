@@ -12,7 +12,7 @@ This collection consists of a handful of fairly simple helper functions written 
 function coinToss(trueProbability = 0.5) { }
 ```
 
-Return `true` or `false` randomly. Optional parameter `trueProbability` to set likelihood of `true` result (defaults to `0.5`, meaning equal probability).
+Return either `true` or `false` randomly. Optional parameter `trueProbability` to set likelihood of `true` result (value between 0 and 1, 0 is never true, 1 is always true, defaults to `0.5`, meaning equal probability).
 
 ```javascript
 //EXAMPLE
