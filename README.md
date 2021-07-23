@@ -1,5 +1,5 @@
 # Randy
-A collection of simple javascript functions for generating more versatile and useful random results.
+A collection of simple javascript functions for generating handy and versatile random results.
 
 Working with the bare random function in programming rarely leads to much interesting results. Often you need to randomly generate quite specific values, toggle some events randomly, or want to have more control over the probability of certain random results. This is helpful for instance in creating generative forms with controlled random parameters in parametric visual or 3D design, generally in situations where decisions and options should be chosen randomly, or where exceptions and outliers should be introduced intentionally in a process.
 
