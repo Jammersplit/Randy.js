@@ -33,6 +33,7 @@ if(coinToss(0.9)) {
 else {
   //but rarely that…
 }
+```
 
 ### coinToss(headsValue, tailsValue)
 ```javascript
