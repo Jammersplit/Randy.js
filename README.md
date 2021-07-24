@@ -1,11 +1,11 @@
 # Randy
-A collection of simple javascript functions for generating handy and versatile random results.
+A collection of primitive javascript functions for generating handy and versatile random results.
 
 Working with the bare random function in programming rarely leads to much interesting results. Often you need to randomly generate quite specific values, toggle some events randomly, or want to have more control over the probability of certain random results. This is helpful for instance in creating generative forms with controlled random parameters in parametric visual or 3D design, generally in situations where decisions and options should be chosen randomly, or where exceptions and outliers should be introduced more intentionally in a process.
 
-This collection consists of a handful of fairly simple functions written in javascript. They help to make it more convenient to modify standard random function results for creating more useful and interesting randomness.
+This collection consists of a handful of fairly simple functions written in javascript. They help to make it more convenient to modify standard random function results for creating a bit more useful and interesting randomness.
 
-The functions use the native `Math.random()` function in javascript. But the code is easily adaptable to other languages. The functions work independently from each other and can be included individually.
+All functions use the native `Math.random()` method in javascript. The functions work independently from each other and can be included individually. The current code doesn't check input parameters much, so might fail if unexpected values are passed. All methods should be easily adaptable to other languages.
 
 You could load the script to use the functions directly or manually extend the native `Math` class in your own code.
 
@@ -21,15 +21,18 @@ Return either `true` or `false` randomly.
 Optional parameter `trueProbability` to set likelihood of returning `true`. Expects a value between `0` and `1` (clamps lower and higher values to that range). `0` returns never `true`, `1` returns always `true`. Defaults to `0.5`, meaning equal probability.
 
 ```javascript
-//EXAMPLE
-//do or don't, equally likely
+//EXAMPLES
+
 if(coinToss()) {
-  //…
+  //do something randomly…
 }
 
-//mostly true, but rarely false
-let choice = coinToss(0.9);
-```
+if(coinToss(0.9)) {
+  //do mostly that…
+}
+else {
+  //but rarely that…
+}
 
 ### coinToss(headsValue, tailsValue)
 ```javascript
