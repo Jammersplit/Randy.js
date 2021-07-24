@@ -9,9 +9,9 @@ All functions use the native `Math.random()` method in javascript. The functions
 
 You could load the script to use the functions directly or manually extend the native `Math` class in your own code.
 
-## Reference
+# Reference
 
-### coinToss()
+## coinToss()
 ```javascript
 function coinToss(trueProbability = 0.5) { }
 ```
@@ -35,7 +35,7 @@ else {
 }
 ```
 ---
-### coinToss(headsValue, tailsValue)
+## coinToss(headsValue, tailsValue)
 ```javascript
 function coinToss(headsValue, tailsValue, headsProbability = 0.5) { }
 ```
@@ -48,7 +48,7 @@ Optional parameter `headsProbability` to set likelihood of returning `headsValue
 //EXAMPLE
 ```
 ---
-### plusMinusOne()
+## plusMinusOne()
 ```javascript
 function plusMinusOne(plusProbability = 0.5) { }
 ```
@@ -65,7 +65,7 @@ Particularly helpful for geometric operations, e.g. to flip orientations of some
 let rotation = plusMinusOne() * 45;
 ```
 ---
-### randomBetween(minValue, maxValue)
+## randomBetween(minValue, maxValue)
 ```javascript
 function randomBetween(minValue, maxValue, stepSize = 0) { }
 ```
@@ -83,17 +83,17 @@ let rotation = randomBetween(0, 360);
 let price = randomBetween(5, 10, 0.01) + "$";
 ```
 ---
-### randomIntBetween(minValue, maxValue)
+## randomIntBetween(minValue, maxValue)
 ```javascript
 function randomIntBetween(minValue, maxValue, stepSize = 0) { }
 ```
 ---
-### randomInt(maxValue)
+## randomInt(maxValue)
 ```javascript
 function randomInt(minValue, maxValue, stepSize = 0) { }
 ```
 ---
-### randomSelect(values)
+## randomSelect(values)
 ```javascript
 function randomSelect(values, probabilityPattern = [1]) { }
 ```
@@ -103,7 +103,7 @@ Returns a random value from a given set of distinct values. Parameter `values` i
 The optional parameter `probabilityPattern` allows to pass a second array that serves as a map of probability ratios for the input values. It's expected to be an array of non-negative numbers. But it's length can be different from the first array. The numbers are mapped to the input values in the first parameter from left to right, repeatedly until all input values have a probability value assigned. If it's longer than the first array, excess values are ignored. The numbers are taken as probability proportions to each other, so `[1,2,1,4,10]` is read as 1:2:1:4:10 for instance (so the 2nd value is two times as likely as the 1st and 3rd, the 5th is 10 times as likely as the 1st and 5 times as likely as the 2nd and so on).
 
 ---
-### randomSlices(numberOfSlices)
+## randomSlices(numberOfSlices)
 ```javascript
 function randomSlices(numberOfSlices, sumOfSlices = 1, maxSpread = 1.0) { }
 ```
@@ -122,7 +122,7 @@ The function should not return 0 as one of the values. Due to rounding issues, t
 //EXAMPLE
 ```
 ---
-### randomLerp(numberOfValues)
+## randomLerp(numberOfValues)
 ```javascript
 function randomLerp(numberOfValues, startValue = 0.0, endValue = 1.0, maxSpread = 1.0) { }
 ```
