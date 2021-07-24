@@ -113,7 +113,7 @@ Returns an array of length `numberOfSlices`, filled with positive random numbers
 
 `sumOfSlices` can be any positive number. Default value of `sumOfSlices` is 1, meaning the sum of all values in the array will be 1.
 
-The optional parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`. `0` meaning all array values will be identical, `1` meaning the biggest possible spread is allowed.
+The optional parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all array values will be identical and `1` meaning the largest possible spread is allowed. Default value is `1`.
 
 The function should not return 0 as one of the values. Due to rounding issues, the sum of the returned array values can be minimally higher or lower than the target sum.
 
