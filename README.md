@@ -18,7 +18,7 @@ function coinToss(trueProbability = 0.5) { }
 
 Return either `true` or `false` randomly.
 
-Optional parameter `trueProbability` to set likelihood of returning `true`. Expects a value between `0` and `1` (clamps lower and higher values to that range). `0` returns never `true`, `1` returns always `true`. Defaults to `0.5`, meaning equal probability.
+Optional parameter `trueProbability` to set likelihood of returning `true`. Expects a value from `0` to `1`. `0` returns never `true`, `1` returns always `true`. Defaults to `0.5`, meaning equal probability.
 
 ```javascript
 //EXAMPLES
@@ -102,9 +102,23 @@ Returns a random value from a given set of distinct values. Parameter `values` i
 
 The optional parameter `probabilityPattern` allows to pass a second array that serves as a map of probability ratios for the input values. It's expected to be an array of non-negative numbers. But it's length can be different from the first array. The numbers are mapped to the input values in the first parameter from left to right, repeatedly until all input values have a probability value assigned. If it's longer than the first array, excess values are ignored. The numbers are taken as probability proportions to each other, so `[1,2,1,4,10]` is read as 1:2:1:4:10 for instance (so the 2nd value is two times as likely as the 1st and 3rd, the 5th is 10 times as likely as the 1st and 5 times as likely as the 2nd and so on).
 
-### randomSlices(minSlice, maxSlice)
+### randomSlices(numberOfSlices)
 ```javascript
-function randomSlices(minSlice, maxSlice) { }
+function randomSlices(numberOfSlices, sumOfSlices = 1, maxSpread = 1.0) { }
+```
+
+Returns an array of length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`.
+
+`numberOfSlices` should be any positive integer. Float numbers are rounded to the next smallest integer.
+
+`sumOfSlices` can be any positive number. Default value of `sumOfSlices` is 1, meaning the sum of all values in the array will be 1.
+
+The optional parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`. `0` meaning all values will be identical, `1` meaning biggest possible spread allowed.
+
+The function should not return 0 as one of the values. Due to rounding issues, the sum of the returned array values can be minimally higher or lower than the target sum.
+
+```javascript
+//EXAMPLE
 ```
 
 ## Advanced Examples
