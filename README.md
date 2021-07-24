@@ -53,7 +53,7 @@ Optional parameter `headsProbability` to set likelihood of returning `headsValue
 function plusMinusOne(plusProbability = 0.5) { }
 ```
 
-Identical to `coinToss(1, -1)`. Returns either `+1` or `-1` randomly.
+Identical to `coinToss(1, -1)`. Returns either `1` or `-1` randomly.
 
 Optional parameter `plusProbability` to set likelihood of returning positive `1`, analog to `coinToss()` above.
 
