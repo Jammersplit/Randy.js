@@ -5,9 +5,9 @@ Working with the bare random function in programming rarely leads to much intere
 
 This collection consists of a handful of fairly simple functions written in javascript. They help to make it more convenient to modify standard random function results for creating a bit more useful and interesting randomness.
 
-All functions use the native `Math.random()` method in javascript. The functions work independently from each other and can be included individually. The current code doesn't check input parameters much, so might fail if unexpected values are passed. All methods should be easily adaptable to other languages.
+All functions use the native `Math.random()` method in javascript, but should be easily adaptable to other languages. The functions work independently from each other and can be included individually. The functions don't do intensive checks of input parameters, so might fail if unexpected values are passed.
 
-You could load the script to use the functions directly or manually extend the native `Math` class in your own code.
+You could use the functions directly or manually extend the native `Math` class in your own code.
 
 # Reference
 
