@@ -142,7 +142,7 @@ The function should not return `startValue` or `endValue` as one of the values.
 ```
 ---
 ## More Examples and Use Patterns
-### Pick from distinct values or a random range
+### Combine picking distinct values and a random range
 ```javascript
 //Return either exactly 0 or a random value between -1 and 1
 let result = randomSelect([0, randomBetween(-1,1)]);
