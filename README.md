@@ -147,19 +147,24 @@ The function should not return `startValue` or `endValue` as one of the values.
 //Return either exactly 0 or a random value between -1 and 1
 let result = randomSelect([0, randomBetween(-1,1)]);
 ```
-### Assign values
+### Pick values to assign
 ```javascript
 let color = coinToss() ? "black" : "white";
 let color = coinTossWith("black", "white");
+
 let color = randomPick(["red", "green", "blue"]);
 ```
-### Align to grid
+### Switch cases
+```javascript
+//
+```
+### Align to a grid
 ```javascript
 let gridSize = 0.5;
 let xPos = ;
 let yPos = ;
 ```
-### Switch cases
+### Divide into sections
 ```javascript
 //
 ```
