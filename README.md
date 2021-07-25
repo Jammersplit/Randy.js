@@ -1,5 +1,5 @@
 # Randy
-A collection of primitive javascript functions for generating handy and versatile random results.
+A collection of primitive javascript functions for generating versatile random results.
 
 Working with the bare random function in programming rarely leads to much interesting results. Often you need to randomly generate quite specific values, toggle some events randomly, or want to have more control over the probability of certain random results. This is helpful for instance in creating generative forms with controlled random parameters in parametric visual or 3D design, generally in situations where decisions and options should be chosen randomly, or where exceptions and outliers should be introduced more intentionally in a process.
 
@@ -147,6 +147,23 @@ The function should not return `startValue` or `endValue` as one of the values.
 //Return either exactly 0 or a random value between -1 and 1
 let result = randomSelect([0, randomBetween(-1,1)]);
 ```
+### Assign values
+```javascript
+let color = coinToss() ? "black" : "white";
+let color = coinTossWith("black", "white");
+let color = randomPick(["red", "green", "blue"]);
+```
+### Align to grid
+```javascript
+let gridSize = 0.5;
+let xPos = ;
+let yPos = ;
+```
+### Switch cases
+```javascript
+//
+```
+### Flip
 ```javascript
 //angle flipping
 ```
