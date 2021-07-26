@@ -133,7 +133,7 @@ Returns a random integer from `1` to the passed number of `sides`, including thi
 function randomPick(values, weights = []) { }
 ```
 
-Returns one random value from a given array of values.
+Returns one random value from a given array of `values`.
 
 Optional second parameter `weights` to pass an array of relative weights that are mapped as probabilities to the input array. These should be non-negative numbers of any value. Their relation defines the likelihood of the matching `values` to be returned. So `randomPick(["a", "b", "c"], [0.2, 1, 2])` would return `"b"` five times more likely than `"a"`, and return `"c"` two times more likely than `"b"`. `0` would mean that the corresponding value will never be returned.
 
