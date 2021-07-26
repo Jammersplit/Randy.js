@@ -36,7 +36,7 @@ else {
   //but rarely that…
 }
 ```
----
+
 ## coinTossWith(headsValue, tailsValue)
 ```javascript
 function coinTossWith(headsValue = true, tailsValue = false, headsProbability = 0.5) { }
@@ -52,7 +52,7 @@ With no parameters passed it behaves exactly like `coinToss()`.
 //EXAMPLE
 let state = coinTossWith("on", "off");
 ```
----
+
 ## plusMinusOne()
 ```javascript
 function plusMinusOne(plusProbability = 0.5) { }
@@ -82,6 +82,7 @@ Returns a random float number between `minNum` and `maxNum`. Results can be equa
 //generate a random rotation angle
 let rotation = randomBetween(0, 360);
 ```
+
 ## randomStepBetween(minValue, maxValue, stepSize)
 ```javascript
 function randomStepBetween(minNum, maxNum, stepSize = 0, includeMax = false) { }
@@ -105,7 +106,7 @@ let odd = randomBetween(1, 100, 2);
 ```javascript
 function randomIntBetween(minValue, maxValue, stepSize = 0) { }
 ```
----
+
 ## randomInt(maxValue)
 ```javascript
 function randomInt(minValue, maxValue, stepSize = 0) { }
