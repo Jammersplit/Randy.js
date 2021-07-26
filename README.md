@@ -42,7 +42,7 @@ else {
 function coinTossWith(headsValue = true, tailsValue = false, headsProbability = 0.5) { }
 ```
 
-Identical to `coinToss()`, but with two custom return values. Returns either `headsValue` or `tailsValue` randomly.
+Returns either `headsValue` or `tailsValue` randomly. Identical to `coinToss()`, but with two custom return values. 
 
 Optional parameter `headsProbability` to set likelihood of returning `headsValue`, analog to `coinToss()` above.
 
@@ -50,6 +50,7 @@ With no parameters passed it behaves exactly like `coinToss()`.
 
 ```javascript
 //EXAMPLE
+let state = coinTossWith("on", "off");
 ```
 ---
 ## plusMinusOne()
@@ -57,34 +58,47 @@ With no parameters passed it behaves exactly like `coinToss()`.
 function plusMinusOne(plusProbability = 0.5) { }
 ```
 
-Identical to `coinToss(1, -1)`. Returns either `1` or `-1` randomly.
+Returns either `1` or `-1` randomly. Identical to `coinTossWith(1, -1)`. 
 
 Optional parameter `plusProbability` to set likelihood of returning positive `1`, analog to `coinToss()` above.
 
-Particularly helpful for geometric operations, e.g. to flip orientations of some shape, axis, model etc. That's why it is a dedicated function with a more descriptive name.
+Particularly helpful for geometric operations, e.g. to flip or alternate orientations of some shape, axis, model etc. That's why it is a dedicated shorthand function here.
 
 ```javascript
 //EXAMPLE
-//set rotation angle to either 45 or -45
+//set an angle to either 45 or -45
 let rotation = plusMinusOne() * 45;
 ```
 ---
 ## randomBetween(minValue, maxValue)
 ```javascript
-function randomBetween(minValue, maxValue, stepSize = 0) { }
+function randomBetween(minNum, maxNum) { }
 ```
 
-Returns a random float number between `minValue` and `maxValue`. Results can be equal to `minValue` but are always lower than `maxValue`. This is a basic function to map `Math.random()` (which returns values from 0 to 1) to other ranges.
-
-The optional parameter `stepSize` allows to limit or *round* the returned results to fixed intervals. For instance, `randomBetween(0, 1, 0.2)` would only return the values `0, 0.2, 0.4, 0.6 and 0.8` (again, results always below `maxValue`). The interval is always starting from the `minValue` up to the `maxValue`. The parameter should be non-negative. The default value is `0`, meaning all float values between the limits can be returned. 
+Returns a random float number between `minNum` and `maxNum`. Results can be equal to `minNum` but are always lower than `maxNum`. This is a basic function to map `Math.random()` (which returns values from 0 to 1) to other ranges.
 
 ```javascript
 //EXAMPLE
-//generate a random rotation angle between 0 and 360 degrees
+//generate a random rotation angle
 let rotation = randomBetween(0, 360);
+```
+## randomStepBetween(minValue, maxValue, stepSize)
+```javascript
+function randomStepBetween(minNum, maxNum, stepSize = 0, includeMax = false) { }
+```
 
-//generate a proper price amount from 5 to 10 dollars, in cent steps
-let price = randomBetween(5, 10, 0.01) + "$";
+Returns a random float number between `minNum` and `maxNum`, but with the values snapping to an interval given by `stepSize`.
+
+For instance, `randomStepBetween(0, 1, 0.2)` would only return the values `0`, `0.2`, `0.4`, `0.6` or `0.8`. The interval steps are always counting from the `minNum` up to the `maxNum`.
+
+The optional fourth parameter controls if `maxNum` should be included in the results, if it fits the interval (`false` by default). Adding `true` to the above, `randomStepBetween(0, 1, 0.2, true)` thus would also return `1.0`. 
+
+The default value for `stepSize` is `0`, meaning it behaves exactly like `randomBetween()`.
+
+```javascript
+//EXAMPLE
+//generate an odd number
+let odd = randomBetween(1, 100, 2);
 ```
 ---
 ## randomIntBetween(minValue, maxValue)
