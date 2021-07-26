@@ -137,7 +137,7 @@ Returns one random value from a given array of `values`.
 
 Optional second parameter `weights` to pass an array of relative weights that are mapped as probabilities to the input array. These should be non-negative numbers of any value. Their relation defines the likelihood of the matching `values` to be returned.
 
-So `randomPick(["a", "b", "c"], [0.2, 1, 2])` would return `"b"` five times more likely than `"a"`, and return `"c"` two times more likely than `"b"`. `0` would mean that the corresponding value will never be returned.
+So `randomPick(["a", "b", "c"], [0.2, 1, 2])` would return `"c"` two times more likely than `"b"` and ten times more likely than `"a"`. Similarly, `"b"` is five times more likely than `"a"`. `0` would mean that the corresponding value will never be returned.
 
 `weights` can be shorter in length than `values`. If that's the case, the `weights` pattern is cycled through repeatedly and the numbers are matched to the `values` from left to right until all `values` have a probability value assigned. If `weights` is longer than the first array, excess values are just ignored.
 
