@@ -13,7 +13,7 @@ The functions are not bundled in a class. You could include the functions direct
 
 # Reference
 
-## coinToss()
+## coinToss(*trueProbability*)
 ```javascript
 function coinToss(trueProbability = 0.5) { }
 ```
@@ -37,7 +37,7 @@ else {
 }
 ```
 
-## coinTossWith(headsValue, tailsValue)
+## coinTossWith(headsValue, tailsValue, *headsProbability*)
 ```javascript
 function coinTossWith(headsValue = true, tailsValue = false, headsProbability = 0.5) { }
 ```
@@ -53,7 +53,7 @@ With no parameters passed it behaves exactly like `coinToss()`.
 let state = coinTossWith("on", "off");
 ```
 
-## plusMinusOne()
+## plusMinusOne(*plusProbability*)
 ```javascript
 function plusMinusOne(plusProbability = 0.5) { }
 ```
@@ -83,7 +83,7 @@ Returns a random float number between `minNum` and `maxNum`. Results can be equa
 let rotation = randomBetween(0, 360);
 ```
 
-## randomStepBetween(minNum, maxNum, stepSize)
+## randomStepBetween(minNum, maxNum, stepSize, *includeMax*)
 ```javascript
 function randomStepBetween(minNum, maxNum, stepSize = 0, includeMax = false) { }
 ```
@@ -109,12 +109,12 @@ let odd = randomBetween(1, 100, 2);
 function randomInt(maxNum) { }
 ```
 
-## randomIntBetween(minNum, maxNum)
+## randomIntBetween(minNum, maxNum, *includeMax*)
 ```javascript
 function randomIntBetween(minNum, maxNum, includeMax = false) { }
 ```
 
-## diceRoll(sides)
+## diceRoll(*sides*)
 ```javascript
 function function diceRoll(sides = 6) { }
 ```
@@ -129,7 +129,7 @@ Returns a random value from a given set of distinct values. Parameter `values` i
 The optional parameter `probabilityPattern` allows to pass a second array that serves as a map of probability ratios for the input values. It's expected to be an array of non-negative numbers. But it's length can be different from the first array. The numbers are mapped to the input values in the first parameter from left to right, repeatedly until all input values have a probability value assigned. If it's longer than the first array, excess values are ignored. The numbers are taken as probability proportions to each other, so `[1,2,1,4,10]` is read as 1:2:1:4:10 for instance (so the 2nd value is two times as likely as the 1st and 3rd, the 5th is 10 times as likely as the 1st and 5 times as likely as the 2nd and so on).
 
 ---
-## randomSlices(numberOfSlices)
+## randomSlices(numberOfSlices, *sumOfSlices*, *maxSpread*)
 ```javascript
 function randomSlices(numberOfSlices, sumOfSlices = 1, maxSpread = 1.0) { }
 ```
@@ -148,7 +148,7 @@ The optional third parameter `maxSpread` controls how much difference is allowed
 //EXAMPLE
 ```
 
-## randomSequence(numberOfValues)
+## randomSequence(numberOfValues, *startValue*, *endValue*, *maxSpread*)
 ```javascript
 function randomSequence(numberOfValues, startValue = 0.0, endValue = 1.0, maxSpread = 1.0) { }
 ```
