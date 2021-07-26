@@ -70,7 +70,7 @@ Particularly helpful for geometric operations, e.g. to flip or alternate orienta
 let rotation = plusMinusOne() * 45;
 ```
 ---
-## randomBetween(minValue, maxValue)
+## randomBetween(minNum, maxNum)
 ```javascript
 function randomBetween(minNum, maxNum) { }
 ```
@@ -83,7 +83,7 @@ Returns a random float number between `minNum` and `maxNum`. Results can be equa
 let rotation = randomBetween(0, 360);
 ```
 
-## randomStepBetween(minValue, maxValue, stepSize)
+## randomStepBetween(minNum, maxNum, stepSize)
 ```javascript
 function randomStepBetween(minNum, maxNum, stepSize = 0, includeMax = false) { }
 ```
