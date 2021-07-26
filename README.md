@@ -201,4 +201,5 @@ let yPos = ;
 ### Dynamically change probability
 ```javascript
 //change probability with cursor
+//a noisy gradient (change color based on y)
 ```
