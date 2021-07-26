@@ -1,13 +1,15 @@
 # Randy
-A collection of primitive javascript functions for generating versatile random results.
+A collection of primitive javascript functions for generating more versatile random results.
 
-Working with the bare random function in programming rarely leads to much interesting results. Often you need to randomly generate quite specific values, toggle some events randomly, or want to have more control over the probability of certain random results. This is helpful for instance in creating generative forms with controlled random parameters in parametric visual or 3D design, generally in situations where decisions and options should be chosen randomly, or where exceptions and outliers should be introduced more intentionally in a process.
+To make the bare random function in javascript more interesting and useful, you often need to modify and map the values it gives you. 
 
-This collection consists of a handful of fairly simple functions written in javascript. They help to make it more convenient to modify standard random function results for creating a bit more useful and interesting randomness.
+The bare random function in javascript gives you randomly generated values from 0 to 1. To make it useful in your code you often need to modify the values it gives you. Mapping the random values to another range is straightforward. But to do more interesting things like toggling some events randomly, generating specific values, or having more conrol over the probabilities of random results needs a few more steps. This collection consists of a handful of fairly simple but handy functions written in javascript. They are a convenient starting point to help modify the random function for creating a bit more useful and interesting kinds of randomness.
 
-All functions use the native `Math.random()` method in javascript, but should be easily adaptable to other languages. The functions work independently from each other and can be included individually. The functions don't do intensive checks of input parameters, so might fail if unexpected values are passed.
+This can be helpful for generative or parametric design, for situations where decisions and options should be chosen randomly, or for when exceptions and outliers should be introduced more intentionally in a process.
 
-You could use the functions directly or manually extend the native `Math` class in your own code.
+All functions use the native `Math.random()` method in javascript, but should be easily adaptable to other languages. The functions work independently from each other and can be included individually. The functions won't do intensive checks of input parameters, so might fail if unexpected values are passed.
+
+The functions are not bundled in a class. You could include the functions directly in your code or even extend the native `Math` class yourself.
 
 # Reference
 
@@ -35,14 +37,16 @@ else {
 }
 ```
 ---
-## coinToss(headsValue, tailsValue)
+## coinTossWith(headsValue, tailsValue)
 ```javascript
-function coinToss(headsValue, tailsValue, headsProbability = 0.5) { }
+function coinTossWith(headsValue = true, tailsValue = false, headsProbability = 0.5) { }
 ```
 
 Identical to `coinToss()`, but with two custom return values. Returns either `headsValue` or `tailsValue` randomly.
 
 Optional parameter `headsProbability` to set likelihood of returning `headsValue`, analog to `coinToss()` above.
+
+With no parameters passed it behaves exactly like `coinToss()`.
 
 ```javascript
 //EXAMPLE
