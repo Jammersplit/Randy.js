@@ -104,19 +104,24 @@ The default value for `stepSize` is `0`, meaning it behaves exactly like `random
 let odd = randomBetween(1, 100, 2);
 ```
 ---
-## randomIntBetween(minValue, maxValue)
+## randomInt(maxNum)
 ```javascript
-function randomIntBetween(minValue, maxValue, stepSize = 0) { }
+function randomInt(maxNum) { }
 ```
 
-## randomInt(maxValue)
+## randomIntBetween(minNum, maxNum)
 ```javascript
-function randomInt(minValue, maxValue, stepSize = 0) { }
+function randomIntBetween(minNum, maxNum, includeMax = false) { }
+```
+
+## diceRoll(sides)
+```javascript
+function function diceRoll(sides = 6) { }
 ```
 ---
-## randomSelect(values)
+## randomPick(values)
 ```javascript
-function randomSelect(values, probabilityPattern = [1]) { }
+function randomPick(values, weights = []) { }
 ```
 
 Returns a random value from a given set of distinct values. Parameter `values` is expected to be an array of arbitrary length and content. One of the array elements is returned randomly. If `values` is not an array, it will be returned.
@@ -137,15 +142,15 @@ Returns an array of length `numberOfSlices`, filled with positive random numbers
 
 The optional third parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all array values will be identical and `1` meaning the largest possible variance is allowed. Default value is `1`.
 
-The function should not return 0 as one of the values. Due to rounding issues, the actual sum of the returned array values can be minimally higher or lower than the target sum.
+> The function will not return 0 as one of the values. Due to rounding issues, the actual sum of the returned array values can be minimally higher or lower than the target sum.
 
 ```javascript
 //EXAMPLE
 ```
----
-## randomLerp(numberOfValues)
+
+## randomSequence(numberOfValues)
 ```javascript
-function randomLerp(numberOfValues, startValue = 0.0, endValue = 1.0, maxSpread = 1.0) { }
+function randomSequence(numberOfValues, startValue = 0.0, endValue = 1.0, maxSpread = 1.0) { }
 ```
 
 Returns an array of length `numberOfValues`, filled with an ordered sequence of values between `startValue` and `endValue`. Think getting a number of points on a graph.
@@ -156,7 +161,7 @@ Returns an array of length `numberOfValues`, filled with an ordered sequence of 
 
 The optional fourth parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all array values will be evenly apart and `1` meaning the largest possible variance is allowed. Default value is `1`.
 
-The function should not return `startValue` or `endValue` as one of the values.
+> The function will not return `startValue` or `endValue` as one of the values.
 
 ```javascript
 //EXAMPLE
