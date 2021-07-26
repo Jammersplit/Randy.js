@@ -1,4 +1,4 @@
-# Randy
+# Randy.js
 A collection of primitive javascript functions for generating more versatile random results.
 
 To make the bare random function in javascript more interesting and useful, you often need to modify and map the values it gives you. 
