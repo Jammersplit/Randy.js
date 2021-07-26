@@ -109,24 +109,37 @@ let odd = randomBetween(1, 100, 2);
 function randomInt(maxNum) { }
 ```
 
+Returns a random integer from `0` to, but not including, `maxNum`.
+
 ## randomIntBetween(minNum, maxNum, *includeMax*)
 ```javascript
 function randomIntBetween(minNum, maxNum, includeMax = false) { }
 ```
 
+Returns a random integer from `minNum` to `maxNum`.
+
+Optional third parameter to include `maxNum` in the results (`false` by default).
+
 ## diceRoll(*sides*)
 ```javascript
 function function diceRoll(sides = 6) { }
 ```
+
+Returns a random integer from `1` to the passed number of `sides`, including this number (`6` by default).
+
 ---
 ## randomPick(values, *weights*)
 ```javascript
 function randomPick(values, weights = []) { }
 ```
 
-Returns a random value from a given set of distinct values. Parameter `values` is expected to be an array of arbitrary length and content. One of the array elements is returned randomly. If `values` is not an array, it will be returned.
+Returns one random value from a given array of values.
 
-The optional parameter `probabilityPattern` allows to pass a second array that serves as a map of probability ratios for the input values. It's expected to be an array of non-negative numbers. But it's length can be different from the first array. The numbers are mapped to the input values in the first parameter from left to right, repeatedly until all input values have a probability value assigned. If it's longer than the first array, excess values are ignored. The numbers are taken as probability proportions to each other, so `[1,2,1,4,10]` is read as 1:2:1:4:10 for instance (so the 2nd value is two times as likely as the 1st and 3rd, the 5th is 10 times as likely as the 1st and 5 times as likely as the 2nd and so on).
+Optional second parameter `weights` to pass an array of relative weights that are mapped as probabilities to the input array. These should be non-negative numbers of any value. Their relation defines the likelihood of the matching `values` to be returned. So `randomPick(["a", "b", "c"], [0.2, 1, 2])` would return `"b"` five times more likely than `"a"`, and return `"c"` two times more likely than `"b"`. `0` would mean that the corresponding value will never be returned.
+
+`weights` can be shorter in length than `values`. If that's the case, the `weights` pattern is cycled through repeatedly and the numbers are matched to the `values` from left to right until all `values` have a probability value assigned. If `weights` is longer than the first array, excess values are just ignored.
+
+If `values` or `weights` is not an array, `values` will be returned.
 
 ---
 ## randomSlices(numberOfSlices, *sumOfSlices*, *maxSpread*)
