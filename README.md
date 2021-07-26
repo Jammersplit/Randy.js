@@ -96,6 +96,8 @@ The optional fourth parameter controls if `maxNum` should be included in the res
 
 The default value for `stepSize` is `0`, meaning it behaves exactly like `randomBetween()`.
 
+> Due to floating point tolerance issues in javascript, the actual return values can be minimally off the exact interval.
+
 ```javascript
 //EXAMPLE
 //generate an odd number
