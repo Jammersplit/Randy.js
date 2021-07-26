@@ -119,7 +119,7 @@ function randomIntBetween(minNum, maxNum, includeMax = false) { }
 function function diceRoll(sides = 6) { }
 ```
 ---
-## randomPick(values)
+## randomPick(values, *weights*)
 ```javascript
 function randomPick(values, weights = []) { }
 ```
