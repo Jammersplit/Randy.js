@@ -183,7 +183,7 @@ let angle = randomPick([0, 45, 90, 135, 180, 225, 270, 315], [2, 1]);
 function randomSlices(numberOfSlices, sumOfSlices = 1, maxSpread = 1.0) { }
 ```
 
-Returns an array of length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think a random pie chart.
+Returns an array of length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think getting sections of a line.
 
 `sumOfSlices` can be any positive number. Default value of `sumOfSlices` is 1, meaning the sum of all values in the array will be 1.
 
@@ -196,8 +196,8 @@ The optional third parameter `maxSpread` controls how much difference is allowed
 ```javascript
 //EXAMPLE
 
-//get a list of angles to draw a random pie chart
-let pieAngles = randomSlices(5, 360);
+//get a list of diameters to stack 100 circles together that fill a space of width
+let diameters = randomSlices(100, width);
 ```
 
 ## randomSequence(numberOfValues, *startValue*, *endValue*, *maxSpread*)
@@ -205,7 +205,7 @@ let pieAngles = randomSlices(5, 360);
 function randomSequence(numberOfValues, startValue = 0.0, endValue = 1.0, maxSpread = 1.0) { }
 ```
 
-Returns an array of length `numberOfValues`, filled with an ordered sequence of values between `startValue` and `endValue`. Think getting a number of points on a graph.
+Returns an array of length `numberOfValues`, filled with an ordered sequence of values between `startValue` and `endValue`. Think getting points on a line.
 
 `startValue` and `endValue` can be any number, also negative numbers, and `startValue` doesn't have to be larger than `endValue`. Default range is `0` to `1`.
 
@@ -218,7 +218,8 @@ The optional fourth parameter `maxSpread` controls how much difference is allowe
 ```javascript
 //EXAMPLE
 
-
+//get angles of a circle to draw a random pie chart
+let pieAngles = randomSequence(5, 360);
 ```
 ---
 ## More Examples and Use Patterns
