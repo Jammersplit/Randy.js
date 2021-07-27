@@ -246,7 +246,7 @@ switch(randomInt(4)) {
   case 3:
     //or this
 ```
-### Place on a grid
+### Align to a grid
 ```javascript
 let gridSize = 5;
 let xPos = randomStepBetween(0, 100, gridSize);
