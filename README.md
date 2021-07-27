@@ -168,7 +168,7 @@ So `randomPick(["a", "b", "c"], [0.2, 1, 2])` would return `"c"` two times more 
 
 `weights` can be shorter in length than `values`. If that's the case, the `weights` pattern is cycled through repeatedly and the numbers are matched to the `values` from left to right until all `values` have a probability value assigned. If `weights` is longer than the first array, excess values are just ignored.
 
-If `values` or `weights` are not arrays, `values` will be returned.
+> If `values` or `weights` are not arrays, `values` will be returned.
 
 ```javascript
 //EXAMPLE
