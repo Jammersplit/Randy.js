@@ -1,7 +1,7 @@
 # Randy.js
 A collection of primitive javascript functions for generating more versatile random results.
 
-The bare random function in javascript generates values from 0 to 1. To make it useful in your code you often need to modify the random values it gives you. Mapping the random results to another range is straightforward. But to do more interesting things like toggling some events randomly, generating specific values, or having more conrol over the probabilities of random results needs a bit more work. This collection consists of a few fairly simple but handy functions written in javascript. They are a convenient starting point to help modify the random function for creating a bit more useful and interesting kinds of randomness.
+The basic random function in javascript generates values from 0 to 1. To make it useful in your code you often need to modify the random values it gives you. Mapping the random results to another range is straightforward. But to do more interesting things like toggling some events randomly, generating specific values, or having more conrol over the probabilities of random results needs a bit more work. This collection consists of a few fairly simple but handy functions written in javascript. They are a convenient starting point to help modify the random function for creating more useful and interesting kinds of randomness.
 
 This can be helpful for generative or parametric design, for situations where decisions should be made randomly, or for when exceptions and outliers should be introduced more intentionally in a process.
 
@@ -102,7 +102,7 @@ The default value for `stepSize` is `0`, meaning the function behaves exactly li
 ```javascript
 //EXAMPLE
 
-//generate a random odd number
+//generate an odd random number only
 let odd = randomBetween(1, 100, 2);
 ```
 ---
@@ -116,12 +116,8 @@ Returns a random integer from `0` to, but not including, `maxNum`.
 ```javascript
 //EXAMPLE
 
-//repeat something up to 10 times
-let repetitions = randomInt(10);
-
-for(var i = 0; i < repetitions; i++) {
-  //…
-}
+//get a random array item
+let item = myArray[randomInt(myArray.length)];
 ```
 
 ## randomIntBetween(minNum, maxNum, *includeMax*)
@@ -136,7 +132,8 @@ Optional third parameter to include `maxNum` in the results (`false` by default)
 ```javascript
 //EXAMPLE
 
-
+//get an integer angle in a range
+let angle = randomIntBetween(-30, 30, true);
 ```
 
 ## diceRoll(*sides*)
@@ -149,7 +146,12 @@ Returns a random integer from `1` to the passed number of `sides`, including thi
 ```javascript
 //EXAMPLE
 
+//repeat something up to 10 times
+let repetitions = diceRoll(10);
 
+for(var i = 0; i < repetitions; i++) {
+  //…
+}
 ```
 
 ---
@@ -171,7 +173,8 @@ If `values` or `weights` are not arrays, `values` will be returned.
 ```javascript
 //EXAMPLE
 
-
+//get one of the angles from the list with multiples of 90° to be two times as likely
+let angle = randomPick([0, 45, 90, 135, 180, 225, 270, 315], [2, 1]);
 ```
 
 ---
@@ -219,12 +222,12 @@ The optional fourth parameter `maxSpread` controls how much difference is allowe
 ```
 ---
 ## More Examples and Use Patterns
-### Combine picking distinct values and a random range
+### Combining random functions
 ```javascript
 //Return either exactly 0 or a random value between -1 and 1
 let result = randomSelect([0, randomBetween(-1,1)]);
 ```
-### Pick values to assign
+### Pick options to assign
 ```javascript
 let color = coinToss() ? "black" : "white";
 let color = coinTossWith("black", "white");
@@ -234,23 +237,28 @@ let color = randomPick(["red", "green", "blue"]);
 ### Switch cases
 ```javascript
 //
+switch(randomInt(4)) {
+  case 0:
+    //do something
+  case 1:
+    //do something else
+  case 2:
+    //or do this
+  case 3:
+    //or this
 ```
-### Align to a grid
+### Place on a grid
 ```javascript
-let gridSize = 0.5;
-let xPos = randomStepBetween(0, 10, gridSize);
-let yPos = randomStepBetween(0, 10, gridSize);
+let gridSize = 5;
+let xPos = randomStepBetween(0, 100, gridSize);
+let yPos = randomStepBetween(0, 100, gridSize);
 ```
-### Divide into sections
+### Dynamic probability
 ```javascript
-//
-```
-### Flip
-```javascript
-//angle flipping
-```
-### Dynamically change probability
-```javascript
-//change probability with cursor
-//a noisy gradient (change color based on y)
+//change color probability based on x value to create a noisy gradient
+for(var x = 0; x < width; x++) {
+  for(var y = 0; y < height; y++) {
+    pixels[x][y] = coinTossWith("black", "white", x / width);
+  }
+}
 ```
