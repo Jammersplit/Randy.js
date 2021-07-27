@@ -252,7 +252,7 @@ let gridSize = 5;
 let xPos = randomStepBetween(0, 100, gridSize);
 let yPos = randomStepBetween(0, 100, gridSize);
 ```
-### Dynamic probability
+### Dynamic probabilities
 ```javascript
 //change color probability based on x coordinate to create a noisy gradient
 for(var x = 0; x < width; x++) {
