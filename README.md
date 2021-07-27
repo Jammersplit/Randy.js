@@ -236,7 +236,6 @@ let color = randomPick(["red", "green", "blue"]);
 ```
 ### Switch cases
 ```javascript
-//
 switch(randomInt(4)) {
   case 0:
     //do something
