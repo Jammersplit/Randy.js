@@ -1,15 +1,13 @@
 # Randy.js
 A collection of primitive javascript functions for generating more versatile random results.
 
-To make the bare random function in javascript more interesting and useful, you often need to modify and map the values it gives you. 
+The bare random function in javascript generates values from 0 to 1. To make it useful in your code you often need to modify the random values it gives you. Mapping the random results to another range is straightforward. But to do more interesting things like toggling some events randomly, generating specific values, or having more conrol over the probabilities of random results needs a bit more work. This collection consists of a few fairly simple but handy functions written in javascript. They are a convenient starting point to help modify the random function for creating a bit more useful and interesting kinds of randomness.
 
-The bare random function in javascript gives you randomly generated values from 0 to 1. To make it useful in your code you often need to modify the values it gives you. Mapping the random values to another range is straightforward. But to do more interesting things like toggling some events randomly, generating specific values, or having more conrol over the probabilities of random results needs a few more steps. This collection consists of a handful of fairly simple but handy functions written in javascript. They are a convenient starting point to help modify the random function for creating a bit more useful and interesting kinds of randomness.
+This can be helpful for generative or parametric design, for situations where decisions should be made randomly, or for when exceptions and outliers should be introduced more intentionally in a process.
 
-This can be helpful for generative or parametric design, for situations where decisions and options should be chosen randomly, or for when exceptions and outliers should be introduced more intentionally in a process.
+All functions here use the native `Math.random()` method in javascript, but should be easy to adapt to other languages. The functions work independently from each other and can be included individually. The functions won't do intensive checks of input parameters, so might fail if unexpected values are passed.
 
-All functions use the native `Math.random()` method in javascript, but should be easily adaptable to other languages. The functions work independently from each other and can be included individually. The functions won't do intensive checks of input parameters, so might fail if unexpected values are passed.
-
-The functions are not bundled in a class. You could include the functions directly in your code or even extend the native `Math` class yourself.
+The functions are not bundled in a class. So you could include the functions directly in your code or even extend the native `Math` class yourself.
 
 # Reference
 
@@ -23,7 +21,7 @@ Return either `true` or `false` randomly.
 Optional parameter `trueProbability` to set likelihood of returning `true`. Expects a value from `0` to `1`. `0` returns never `true`, `1` returns always `true`. Defaults to `0.5`, meaning equal probability.
 
 ```javascript
-//EXAMPLES
+//EXAMPLE
 
 if(coinToss()) {
   //do something randomly…
@@ -50,6 +48,7 @@ With no parameters passed it behaves exactly like `coinToss()`.
 
 ```javascript
 //EXAMPLE
+
 let state = coinTossWith("on", "off");
 ```
 
@@ -66,6 +65,7 @@ Particularly helpful for geometric operations, e.g. to flip or alternate orienta
 
 ```javascript
 //EXAMPLE
+
 //set an angle to either 45 or -45
 let rotation = plusMinusOne() * 45;
 ```
@@ -79,7 +79,8 @@ Returns a random float number between `minNum` and `maxNum`. Results can be equa
 
 ```javascript
 //EXAMPLE
-//generate a random rotation angle
+
+//generate a random angle
 let rotation = randomBetween(0, 360);
 ```
 
@@ -90,17 +91,18 @@ function randomStepBetween(minNum, maxNum, stepSize = 0, includeMax = false) { }
 
 Returns a random float number between `minNum` and `maxNum`, but with the values snapping to an interval given by `stepSize`.
 
-For instance, `randomStepBetween(0, 1, 0.2)` would only return the values `0`, `0.2`, `0.4`, `0.6` or `0.8`. The interval steps are always counting from the `minNum` up to the `maxNum`.
+For instance, `randomStepBetween(0, 1, 0.2)` would only return the values `0`, `0.2`, `0.4`, `0.6` or `0.8`. The interval steps are always counting from `minNum` up to `maxNum`.
 
-The optional fourth parameter controls if `maxNum` should be included in the results, if it fits the interval (`false` by default). Adding `true` to the above, `randomStepBetween(0, 1, 0.2, true)` thus would also return `1.0`. 
+The optional fourth parameter controls if `maxNum` should be included in the results, if it fits the interval (`false` by default). Adding `true` to the above, `randomStepBetween(0, 1, 0.2, true)` thus would additionally return `1.0`. 
 
-The default value for `stepSize` is `0`, meaning it behaves exactly like `randomBetween()`.
+The default value for `stepSize` is `0`, meaning the function behaves exactly like `randomBetween()`.
 
 > Due to floating point tolerance issues in javascript, the actual return values can be minimally off the exact interval.
 
 ```javascript
 //EXAMPLE
-//generate an odd number
+
+//generate a random odd number
 let odd = randomBetween(1, 100, 2);
 ```
 ---
@@ -111,6 +113,17 @@ function randomInt(maxNum) { }
 
 Returns a random integer from `0` to, but not including, `maxNum`.
 
+```javascript
+//EXAMPLE
+
+//repeat something up to 10 times
+let repetitions = randomInt(10);
+
+for(var i = 0; i < repetitions; i++) {
+  //…
+}
+```
+
 ## randomIntBetween(minNum, maxNum, *includeMax*)
 ```javascript
 function randomIntBetween(minNum, maxNum, includeMax = false) { }
@@ -120,12 +133,24 @@ Returns a random integer from `minNum` to `maxNum`.
 
 Optional third parameter to include `maxNum` in the results (`false` by default).
 
+```javascript
+//EXAMPLE
+
+
+```
+
 ## diceRoll(*sides*)
 ```javascript
 function function diceRoll(sides = 6) { }
 ```
 
-Returns a random integer from `1` to the passed number of `sides`, including this number (`6` by default).
+Returns a random integer from `1` to the passed number of `sides`, including this number (`6` by default). Identical to `randomIntBetween(1, sides, true)`.
+
+```javascript
+//EXAMPLE
+
+
+```
 
 ---
 ## randomPick(values, *weights*)
@@ -142,6 +167,12 @@ So `randomPick(["a", "b", "c"], [0.2, 1, 2])` would return `"c"` two times more 
 `weights` can be shorter in length than `values`. If that's the case, the `weights` pattern is cycled through repeatedly and the numbers are matched to the `values` from left to right until all `values` have a probability value assigned. If `weights` is longer than the first array, excess values are just ignored.
 
 If `values` or `weights` are not arrays, `values` will be returned.
+
+```javascript
+//EXAMPLE
+
+
+```
 
 ---
 ## randomSlices(numberOfSlices, *sumOfSlices*, *maxSpread*)
@@ -161,6 +192,9 @@ The optional third parameter `maxSpread` controls how much difference is allowed
 
 ```javascript
 //EXAMPLE
+
+//get a list of angles to draw a random pie chart
+let pieAngles = randomSlices(5, 360);
 ```
 
 ## randomSequence(numberOfValues, *startValue*, *endValue*, *maxSpread*)
@@ -180,6 +214,8 @@ The optional fourth parameter `maxSpread` controls how much difference is allowe
 
 ```javascript
 //EXAMPLE
+
+
 ```
 ---
 ## More Examples and Use Patterns
@@ -202,8 +238,8 @@ let color = randomPick(["red", "green", "blue"]);
 ### Align to a grid
 ```javascript
 let gridSize = 0.5;
-let xPos = ;
-let yPos = ;
+let xPos = randomStepBetween(0, 10, gridSize);
+let yPos = randomStepBetween(0, 10, gridSize);
 ```
 ### Divide into sections
 ```javascript
