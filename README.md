@@ -1,7 +1,7 @@
 # Randy.js
 A collection of primitive javascript functions for generating more versatile random results.
 
-The basic random function in javascript generates values from 0 to 1. To make it useful in your code you often need to modify the random values it gives you. Mapping the random results to another range is straightforward. But to do more interesting things like toggling some events randomly, generating specific values, or having more conrol over the probabilities of random results needs a bit more work. This collection consists of a few fairly simple but handy functions written in javascript. They are a convenient starting point to help modify the random function for creating more useful and interesting kinds of randomness.
+The basic random function in javascript generates values from 0 to 1. To make it useful in your code you often need to modify these random values. Mapping the random results to another range is straightforward. But to do more interesting things like toggling some events randomly, generating specific values, or having more conrol over the probabilities of random results needs a bit more work. This collection consists of a few fairly simple but handy functions written in javascript. They are a convenient starting point to help modify the random function for creating a bit more useful and interesting kinds of randomness.
 
 This can be helpful for generative or parametric design, for situations where decisions should be made randomly, or for when exceptions and outliers should be introduced more intentionally in a process.
 
