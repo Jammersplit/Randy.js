@@ -202,7 +202,7 @@ let diameters = randomSlices(100, width);
 
 ## randomSequence(numberOfValues, *startValue*, *endValue*, *maxSpread*)
 ```javascript
-function randomSequence(numberOfValues, startValue = 0.0, endValue = 1.0, maxSpread = 1.0) { }
+function randomSequence(numberOfValues = 1, startValue = 0.0, endValue = 1.0, maxSpread = 1.0) { }
 ```
 
 Returns an array of length `numberOfValues`, filled with an ordered sequence of values between `startValue` and `endValue`. Think getting points on a line.
