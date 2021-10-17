@@ -185,13 +185,15 @@ function randomSlices(numberOfSlices, sumOfSlices = 1, maxSpread = 1.0) { }
 
 Returns an array of length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think getting sections of a line.
 
-`sumOfSlices` can be any positive number. Default value of `sumOfSlices` is 1, meaning the sum of all values in the array will be 1.
+`sumOfSlices` can be any positive number. Default value of `sumOfSlices` is 1, meaning the sum of all values in the returned array will be 1.
 
 The optional third parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all array values will be identical and `1` meaning the largest possible variance is allowed. Default value is `1`.
 
 > `numberOfSlices` should be any positive integer. Float numbers are rounded to the next smallest integer.
 
-> The function will not return 0 as one of the values. Due to rounding issues, the actual sum of the returned array values can be minimally higher or lower than the target sum.
+> The function will never return 0 as one of the values in the array.
+
+> Due to rounding issues, the actual sum of the returned array values can be minimally higher or lower than the target sum.
 
 ```javascript
 //EXAMPLE
@@ -213,7 +215,7 @@ The optional fourth parameter `maxSpread` controls how much difference is allowe
 
 > `numberOfValues` should be any positive integer. Float numbers are rounded to the next smallest integer.
 
-> The function will not return `startValue` or `endValue` as one of the values.
+> The function will not return `startValue` or `endValue` as one of the values in the array.
 
 ```javascript
 //EXAMPLE
