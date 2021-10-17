@@ -61,7 +61,7 @@ Returns either `1` or `-1` randomly. Identical to `coinTossWith(1, -1)`.
 
 Optional parameter `plusProbability` to set likelihood of returning positive `1`, analog to `coinToss()` above.
 
-Particularly helpful for geometric operations, e.g. to flip or alternate orientations of some shape, axis, model etc. That's why it is a dedicated shorthand function here.
+Particularly helpful as a shorthand function for geometric operations, e.g. to flip or alternate orientations of some shape, axis, model etc.
 
 ```javascript
 //EXAMPLE
