@@ -257,7 +257,7 @@ let yPos = randomStepBetween(0, 100, gridSize);
 ```
 ### Dynamic probabilities
 ```javascript
-//change color probability based on x coordinate to create a noisy gradient
+//change color probability based on the pixel's x coordinate to create a noisy gradient
 for(var x = 0; x < width; x++) {
   for(var y = 0; y < height; y++) {
     pixels[x][y] = coinTossWith("black", "white", x / width);
