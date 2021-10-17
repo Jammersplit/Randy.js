@@ -1,3 +1,5 @@
+![Random gradient](gradient-header.png?raw=true)
+
 # Randy.js
 A collection of primitive javascript functions for generating more versatile random results.
 
