@@ -1,13 +1,13 @@
 # Randy.js
 A collection of primitive javascript functions for generating more versatile random results.
 
-The basic random function in javascript generates values from 0 to 1. To make it useful in your code you often need to modify these random values. Mapping the random results to another range is straightforward. But to do more interesting things like toggling some events randomly, generating specific values, or having more conrol over the probabilities of random results needs a bit more work. This collection consists of a few fairly simple but handy functions written in javascript. They are a convenient starting point to help modify the random function for creating a bit more useful and interesting kinds of randomness.
+The basic random function in javascript generates values from 0 to 1. To make these values useful in your code, you often need to modify them. Mapping the random results to another range is straightforward. But to do more interesting things like toggling some events randomly, generating more specific values, or having more conrol over the probabilities of random results needs a bit more work. This collection consists of a few fairly simple but handy functions written in javascript. They are a convenient starting point to help modify the random function for creating slightly more useful and interesting kinds of randomness.
 
 This can be helpful for generative or parametric design, for situations where decisions should be made randomly, or for when exceptions and outliers should be introduced more intentionally in a process.
 
-All functions here use the native `Math.random()` method in javascript, but should be easy to adapt to other languages. The functions work independently from each other and can be included individually. The functions won't do intensive checks of input parameters, so might fail if unexpected values are passed.
+The functions are written in javascript and use the native `Math.random()` method, but should be easy to adapt to other languages. The functions work independently from each other and can be included individually. The functions don't do intensive checks of input parameters, so might fail if unexpected values are passed.
 
-The functions are not bundled in a class. So you could include the functions directly in your code or even extend the native `Math` class yourself.
+The functions are not bundled in a class. You can include the functions directly in your code or extend the native `Math` class yourself.
 
 # Reference
 
