@@ -228,7 +228,7 @@ let pieAngles = randomSequence(5, 360);
 ### Combining random functions
 ```javascript
 //Return either exactly 0 or a random value between -1 and 1
-let result = randomSelect([0, randomBetween(-1,1)]);
+let result = randomSelect([0, randomBetween(-1, 1)]);
 ```
 ### Pick options to assign
 ```javascript
