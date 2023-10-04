@@ -20,7 +20,7 @@ function coinToss(trueProbability = 0.5) { }
 
 Return either `true` or `false` randomly.
 
-Optional parameter `trueProbability` to set likelihood of returning `true`. Expects a value from `0` to `1`. `0` returns never `true`, `1` returns always `true`. Defaults to `0.5`, meaning equal probability.
+Optional parameter `trueProbability` to set likelihood of returning `true`. Expects a value from `0` to `1`. `0` never returns `true`, `1` always returns `true`. Defaults to `0.5`, meaning equal probability.
 
 ```javascript
 //EXAMPLE
@@ -77,7 +77,7 @@ let rotation = plusMinusOne() * 45;
 function randomBetween(minNum, maxNum) { }
 ```
 
-Returns a random float number between `minNum` and `maxNum`. Results can be equal to `minNum` but are always lower than `maxNum`. This is a basic function to map `Math.random()` (which returns values from 0 to 1) to other ranges.
+Returns a random float number between `minNum` and `maxNum`. Results can be equal to `minNum` but are always lower than `maxNum`. This is a basic function to map `Math.random()` to other ranges than 0–1.
 
 ```javascript
 //EXAMPLE
