@@ -87,13 +87,13 @@ let rotation = randomBetween(0, 360);
 function randomStepBetween(minNum, maxNum, stepSize = 0, includeMax = false) { }
 ```
 
-Returns a random float number between `minNum` and `maxNum`, but with the values snapping to an interval given by `stepSize`. The interval steps are always counted from `minNum` up to `maxNum`.
+Returns a random float number between `minNum` and `maxNum`, but with the return values snapping to an interval given by `stepSize`. The interval steps are always counted starting from `minNum` to `maxNum`.
 
 For instance, `randomStepBetween(0, 1, 0.2)` would only return the values `0`, `0.2`, `0.4`, `0.6` or `0.8`.
 
-The optional fourth parameter `includeMax` controls if `maxNum` should be included in the results, if it fits the interval (`false` by default). Adding `true` to the above, `randomStepBetween(0, 1, 0.2, true)` thus would also return `1.0`. 
+The optional fourth parameter `includeMax` controls if `maxNum` should be included in the results, if it fits the interval (`false` by default). Adding `true` to the above, `randomStepBetween(0, 1, 0.2, true)` would also return `1.0`. 
 
-The default value for `stepSize` is `0`, meaning the function behaves exactly like `randomBetween()`.
+The default value for `stepSize` is `0`, which would make the function behave exactly like `randomBetween()`.
 
 > Due to floating point tolerance issues in javascript, the actual return values can be minimally off the exact interval.
 
@@ -102,12 +102,18 @@ The default value for `stepSize` is `0`, meaning the function behaves exactly li
 let odd = randomBetween(1, 100, 2);
 ```
 ---
-## randomInt(maxNum)
+## randomInt(maxNum, *includeMax*)
 ```javascript
-function randomInt(maxNum) { }
+function randomInt(maxNum, includeMax = false) { }
 ```
 
-Returns a random integer from `0` to, but not including, `maxNum`.
+Returns a random integer between `0` and `maxNum`, with `maxNum` not included by default.
+
+Note that `maxNum` can be a float value and can also be negative.
+
+Optional second parameter `includeMax` to include `maxNum` in the results (`false` by default).
+
+> To be precise: As `maxNum` can be a float, `includeMax` will include the closest integer not smaller or larger than `maxNum` in the results. Effectively, this means `includeMax` only makes a difference if `maxNum` is exactly an integer. If `maxNum` is 2.4, the function will output 0, 1, or 2, regardless of `includeMax`. If `maxNum` is 3, the function will output 0, 1, or 2, but 3 only if `includeMax` is `true`.
 
 ```javascript
 //get a random array item
@@ -119,9 +125,14 @@ let item = myArray[randomInt(myArray.length)];
 function randomIntBetween(minNum, maxNum, includeMax = false) { }
 ```
 
-Returns a random integer from `minNum` to `maxNum`.
+Returns a random integer between `minNum` and `maxNum`, with `maxNum` not included by default.
 
-Optional third parameter `includeMax` to include `maxNum` in the results (`false` by default).
+Compared to other more simple implementations for such a function, this one is the most flexible I could come up with:
+* `minNum` and/or `maxNum` can be float values. They will be rounded to the closest integer within the interval between the values.
+* `minNum` and/or `maxNum` can be negative.
+* `maxNum` can be smaller than `minNum`.
+
+Optional third parameter `includeMax` to include `maxNum` in the results (`false` by default). 
 
 ```javascript
 //get an integer angle in a range
