@@ -127,7 +127,7 @@ function randomIntBetween(minNum, maxNum, includeMax = false) { }
 
 Returns a random integer between `minNum` and `maxNum`, with `maxNum` not included by default.
 
-Compared to other more simple implementations for such a function, this one is the most flexible I could come up with:
+Compared to other, simpler implementations for such a function, this one is the most flexible I could come up with:
 * `minNum` and/or `maxNum` can be float values. They will be rounded to the closest integer within the interval between the values.
 * `minNum` and/or `maxNum` can be negative. Some other implementations incorrectly round negative float values.
 * `maxNum` can be smaller than `minNum`.
