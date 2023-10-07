@@ -129,10 +129,10 @@ Returns a random integer between `minNum` and `maxNum`, with `maxNum` not includ
 
 Compared to other more simple implementations for such a function, this one is the most flexible I could come up with:
 * `minNum` and/or `maxNum` can be float values. They will be rounded to the closest integer within the interval between the values.
-* `minNum` and/or `maxNum` can be negative.
+* `minNum` and/or `maxNum` can be negative. Some other implementations incorrectly round negative float values.
 * `maxNum` can be smaller than `minNum`.
 
-Optional third parameter `includeMax` to include `maxNum` in the results (`false` by default). 
+Optional third parameter `includeMax` to include `maxNum` in the results (`false` by default). This parameter always applies to `maxNum`, not the higher of the two input parameters. The order of `minNum` and `maxNum` thus implies the 'direction' from which the values are created, if you imagine a number line.
 
 ```javascript
 //get an integer angle in a range
