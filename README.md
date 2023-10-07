@@ -132,7 +132,25 @@ Compared to other common, simpler implementations for such a function, this one 
 * `minNum` and/or `maxNum` can be negative. Some other implementations incorrectly round negative float values.
 * `maxNum` can be smaller than `minNum`.
 
-Optional third parameter `includeMax` to include `maxNum` in the results (`false` by default). This parameter always applies to `maxNum`, not the higher of the two input parameters. The order of `minNum` and `maxNum` thus implies the 'direction' from which the values are created, if you imagine a number line.
+Optional third parameter `includeMax` to include `maxNum` in the results (`false` by default). This parameter always applies to `maxNum`, not the higher of the two input parameters.
+
+> To be precise again: As `maxNum` can be a float, `includeMax` will include the closest integer not smaller or larger than `maxNum` in the results. Effectively, this means `includeMax` only makes a difference if `maxNum` is exactly an integer. Analog to `randomInt()` above.
+```javascript
+randomIntBetween(-1.2, 2.6)       //output: -1, 0, 1, 2
+randomIntBetween(-1.2, 2.6, true) //output: -1, 0, 1, 2
+```
+
+> The order of `minNum` and `maxNum` implies the 'direction' from which the values are created, if you imagine a number line.
+```javascript
+randomIntBetween(1, 4) //output: 1, 2, 3
+randomIntBetween(4, 1) //output: 4, 3, 2
+```
+
+> If `minNum` is a float value, it will not just be rounded to the closest integer, but the closest integer within the interval between the values.
+```javascript
+randomIntBetween(-1.5, -4.3) //output: -2, -3, -4
+randomIntBetween(-1.5, 2.5)  //output: -1, 0, 1, 2
+```
 
 ```javascript
 //get an integer angle in a range
