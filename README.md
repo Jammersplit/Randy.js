@@ -246,9 +246,9 @@ Returns an array with length `numberOfSlices`, filled with positive random numbe
 
 `numberOfSlices` should be a positive integer. Float values will be rounded to the next lowest integer. If `numberOfSlices` is `1` (default), the function will return an array with a single value of `sumOfSlices`. If `numberOfSlices` is anything below `1`, the function will return an empty array.
 
-`sumOfSlices` should be any positive number. Default value is `1`, meaning the sum of all values in the returned array will be `1`. Negative values will be inverted. A sum of `0` will lead to `0` for all values in the returned array.
+`sumOfSlices` can be any number, also negative. Default value is `1`. A sum of `0` will lead to all values in the returned array being `0`.
 
-The optional third parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all slices in the returned array will be identical, and `1` meaning the largest possible variance between slices is allowed. Default value is `1`.
+Optional third parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all slices in the returned array will be identical, and `1` meaning the largest possible variance between slices is allowed. Default value is `1`.
 
 None of the values in the returned array will be `0` (except if `sumOfSlices` is `0`).
 
@@ -273,7 +273,7 @@ Returns an array with length `numberOfValues`, filled with an ordered sequence o
 
 Note that `startValue` and `endValue` will not be part of the returned array (except if they are identical).
 
-The optional fourth parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all values in the returned array will be evenly apart, and `1` meaning the largest possible variance between values is allowed. Default value is `1`.
+Optional fourth parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all values in the returned array will be evenly apart, and `1` meaning the largest possible variance between values is allowed. Default value is `1`.
 
 ```javascript
 //get a list of random angles of a circle to draw a pie chart
