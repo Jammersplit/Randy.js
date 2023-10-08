@@ -244,7 +244,7 @@ function randomSlices(numberOfSlices = 1, sumOfSlices = 1, maxSpread = 1.0) { }
 
 Returns an array with length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think getting random sections of a line with a length of sum.
 
-`numberOfSlices` should be a positive integer. Float values will be rounded to the next lowest integer. If `numberOfSlices` is `1` (default) or anything below `1`, the function will return an array with a single value of `sumOfSlices`.
+`numberOfSlices` should be a positive integer. Float values will be rounded to the next lowest integer. If `numberOfSlices` is `1` (default), the function will return an array with a single value of `sumOfSlices`. If `numberOfSlices` is anything below `1`, the function will return an empty array.
 
 `sumOfSlices` should be any positive number. Default value is `1`, meaning the sum of all values in the returned array will be `1`. Negative values will be inverted. A sum of `0` will lead to `0` for all values in the returned array.
 
@@ -266,13 +266,13 @@ function randomSequence(numberOfValues = 1, startValue = 0.0, endValue = 1.0, ma
 
 Returns an array with length `numberOfValues`, filled with an ordered sequence of values between `startValue` and `endValue`. Think getting random points on a line from start to end.
 
-`startValue` and `endValue` can be any number, also negative numbers, and `startValue` doesn't have to be larger than `endValue`. Default range is `0` to `1` and one returned value. Thus without parameters, this works similar to the default random() function.
+`numberOfValues` should be a positive integer. Float values will be rounded to the next lowest integer. If `numberOfValues` is anything lower than `1`, the function returns an empty array. Default is `1`.
+
+`startValue` and `endValue` can be any number, also negative numbers. `startValue` doesn't have to be smaller than `endValue`. Default range is `0` to `1`.
+
+Note that `startValue` and `endValue` will not be part of the returned array (except if they are identical).
 
 The optional fourth parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all values in the returned array will be evenly apart, and `1` meaning the largest possible variance between values is allowed. Default value is `1`.
-
-> `numberOfValues` should be any positive integer. Float numbers are rounded to the next smallest integer.
-
-> `startValue` and `endValue` won't be part of the returned array.
 
 ```javascript
 //get random angles of a circle to draw a pie chart
