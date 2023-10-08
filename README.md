@@ -24,8 +24,8 @@ The functions are not bundled in a class. You can include the functions directly
 * [randomIntBetween(minNum, maxNum, *includeMax*)](#randomintbetweenminnum-maxnum-includemax)
 * [diceRoll(*sides*)](#dicerollsides)
 * [randomPick(values, *weights*)](#randompickvalues-weights)
-* [randomSlices(numberOfSlices, *sumOfSlices*, *maxSpread*)](#randomslicesnumberofslices-sumofslices-maxspread)
-* [randomSequence(numberOfValues, *startValue*, *endValue*, *maxSpread*)](#randomsequencenumberofvalues-startvalue-endvalue-maxspread)
+* [randomSlices(*numberOfSlices*, *sumOfSlices*, *maxSpread*)](#randomslicesnumberofslices-sumofslices-maxspread)
+* [randomSequence(*numberOfValues*, *startValue*, *endValue*, *maxSpread*)](#randomsequencenumberofvalues-startvalue-endvalue-maxspread)
 * [More Examples](#more-examples)
 
 ## coinToss(*trueProbability*)
@@ -237,20 +237,20 @@ let angle = randomPick([0, 45, 90, 135, 180, 225, 270, 315], [2, 1]);
 ```
 
 ---
-## randomSlices(numberOfSlices, *sumOfSlices*, *maxSpread*)
+## randomSlices(*numberOfSlices*, *sumOfSlices*, *maxSpread*)
 ```javascript
-function randomSlices(numberOfSlices, sumOfSlices = 1, maxSpread = 1.0) { }
+function randomSlices(numberOfSlices = 1, sumOfSlices = 1, maxSpread = 1.0) { }
 ```
 
-Returns an array with length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think getting random sections of a line with a certain length.
+Returns an array with length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think getting random sections of a line with a length of sum.
 
-`sumOfSlices` can be any positive number. Default value of `sumOfSlices` is 1, meaning the sum of all values in the returned array will be 1.
+`numberOfSlices` should be a positive integer. Float values will be rounded to the next lowest integer. If 'numberOfSlices` is `1` (default) or anything below `1`, the function will return an array with a single value of `sumOfSlices`.
+
+`sumOfSlices` should be any positive number. Default value is `1`, meaning the sum of all values in the returned array will be `1`. Negative values will be inverted. A sum of `0` will lead to `0` for all values in the returned array.
 
 The optional third parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all slices in the returned array will be identical, and `1` meaning the largest possible variance between slices is allowed. Default value is `1`.
 
-> `numberOfSlices` should be any positive integer. Float numbers are rounded to the next smallest integer.
-
-> None of the slices in the returned array will ever be 0.
+None of the values in the returned array will be `0` (except if `sumOfSlices` is `0`).
 
 > Due to rounding issues, the actual sum of the returned array values can be minimally higher or lower than the target sum.
 
@@ -259,7 +259,7 @@ The optional third parameter `maxSpread` controls how much difference is allowed
 let sections = randomSlices(100, width);
 ```
 
-## randomSequence(numberOfValues, *startValue*, *endValue*, *maxSpread*)
+## randomSequence(*numberOfValues*, *startValue*, *endValue*, *maxSpread*)
 ```javascript
 function randomSequence(numberOfValues = 1, startValue = 0.0, endValue = 1.0, maxSpread = 1.0) { }
 ```
