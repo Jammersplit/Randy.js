@@ -244,7 +244,7 @@ function randomSlices(numberOfSlices = 1, sumOfSlices = 1, maxSpread = 1.0) { }
 
 Returns an array with length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think getting random sections of a line with a length of sum.
 
-`numberOfSlices` should be a positive integer. Float values will be rounded to the next lowest integer. If 'numberOfSlices` is `1` (default) or anything below `1`, the function will return an array with a single value of `sumOfSlices`.
+`numberOfSlices` should be a positive integer. Float values will be rounded to the next lowest integer. If `numberOfSlices` is `1` (default) or anything below `1`, the function will return an array with a single value of `sumOfSlices`.
 
 `sumOfSlices` should be any positive number. Default value is `1`, meaning the sum of all values in the returned array will be `1`. Negative values will be inverted. A sum of `0` will lead to `0` for all values in the returned array.
 
