@@ -177,6 +177,8 @@ function function diceRoll(sides = 6) { }
 
 Returns a random integer from `1` up to the passed number of `sides`, including this number (`6` by default). Identical to `randomIntBetween(1, sides, true)`.
 
+`sides` should be a positive integer. Negative values will be inverted. Float values will be rounded to the next lowest integer larger than `0`.
+
 ```javascript
 //repeat something once or up to 10 times
 let repetitions = diceRoll(10);
