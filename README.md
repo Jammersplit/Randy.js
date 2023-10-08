@@ -204,9 +204,11 @@ function randomPick(values, weights = []) { }
 
 Returns a random value from a given array of possible `values`.
 
-Optional second parameter `weights` allows to pass an array of relative weights that are mapped as probabilities to the array of values. These should be non-negative numbers. Their relation defines the likelihood of the matching `values` to be returned.
+Optional second parameter `weights` allows to pass an array of relative weights that are mapped as probabilities to the array of `values`. These should be non-negative numbers. Their relation defines the likelihood of the matching `values` to be returned.
 
 For instance, `randomPick(["a", "b", "c"], [2, 1, 0.2])` would return `"a"` two times more likely than `"b"` (2:1) and ten times more likely than `"c"` (2:0.2). Similarly, `"b"` is returned five times more likely than `"c"` (1:0.2). A value of `0` in the second array would result in the corresponding value in the first array to never be returned.
+
+If the `weights` array is empty (default) or has only one value, each of the `values` are picked with the same propability.
 
 The `weights` array can be shorter in length than `values`. If that's the case, the `weights` sequence is cycled through repeatedly and matched to the `values` from left to right until all `values` have a weight value assigned. If `weights` is longer than the first array, excess values are ignored.
 
