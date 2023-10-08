@@ -87,18 +87,24 @@ let rotation = randomBetween(0, 360);
 function randomStepBetween(minNum, maxNum, stepSize = 0, includeMax = false) { }
 ```
 
-Returns a random float number between `minNum` and `maxNum`, but with the return values snapping to an interval given by `stepSize`. The interval steps are always counted starting from `minNum` to `maxNum`.
+Returns a random float number between `minNum` and `maxNum`, but with the return values snapping to a fixed interval given by `stepSize`. The interval steps are always counted starting from `minNum` to `maxNum`.
+```javascript
+randomStepBetween(0, 1, 0.2) //output: 0, 0.2, 0.4, 0.6, 0.8
+```
 
-For instance, `randomStepBetween(0, 1, 0.2)` would only return the values `0`, `0.2`, `0.4`, `0.6` or `0.8`.
+`minNum` and/or `maxNum` can be negative. `maxNum` can be smaller than `minNum`.
 
-The optional fourth parameter `includeMax` controls if `maxNum` should be included in the results, if it fits the interval (`false` by default). Adding `true` to the above, `randomStepBetween(0, 1, 0.2, true)` would also return `1.0`. 
+Optional parameter `stepSize` should be non-negative. Negative values will be inverted. The default is `0`, which would make the function behave like `randomBetween()`. A `stepSize` larger than the difference between the input numbers will always return `minNum`.
 
-The default value for `stepSize` is `0`, which would make the function behave exactly like `randomBetween()`.
+The optional fourth parameter `includeMax` controls if `maxNum` should be included in the results, if it fits the interval (`false` by default).
+```javascript
+randomStepBetween(0, 1, 0.2, true) //output: 0, 0.2, 0.4, 0.6, 0.8, 1
+```
 
 > Due to floating point tolerance issues in javascript, the actual return values can be minimally off the exact interval.
 
 ```javascript
-//generate only odd random numbers
+//generate only odd random numbers (1, 3, 5, …, 99)
 let odd = randomBetween(1, 100, 2);
 ```
 ---
@@ -175,12 +181,14 @@ let angle = randomIntBetween(-30, 30, true);
 function function diceRoll(sides = 6) { }
 ```
 
-Returns a random integer from `1` up to the passed number of `sides`, including this number (`6` by default). Identical to `randomIntBetween(1, sides, true)`.
+Returns a random integer from `1` up to the passed number of `sides`, including this number (`6` by default). Similar to `randomIntBetween(1, sides, true)`.
 
-`sides` should be a positive integer. Negative values will be inverted. Float values will be rounded to the next lowest integer larger than `0`.
+`sides` should be a positive integer. Negative values will be inverted. Float values will then be rounded to the next lowest integer. When `sides` is `0` or rounded to `0`, the result will always be `1`.
+
+> To do the same but include `0`, use `randomInt(sides, true)`. To make custom dice, use `randomPick([side1, side2, …])`.
 
 ```javascript
-//repeat something once or up to 10 times
+//repeat something up to 10 times
 let repetitions = diceRoll(10);
 
 for(var i = 0; i < repetitions; i++) {
@@ -198,15 +206,17 @@ Returns a random value from a given array of possible `values`.
 
 Optional second parameter `weights` allows to pass an array of relative weights that are mapped as probabilities to the array of values. These should be non-negative numbers. Their relation defines the likelihood of the matching `values` to be returned.
 
-For instance, `randomPick(["a", "b", "c"], [2, 1, 0.2])` would return `"a"` two times more likely than `"b"` and ten times more likely than `"c"`. Similarly, `"b"` is returned five times more likely than `"c"`. `0` in the second array would mean that the corresponding value in the first array will never be returned.
+For instance, `randomPick(["a", "b", "c"], [2, 1, 0.2])` would return `"a"` two times more likely than `"b"` (2:1) and ten times more likely than `"c"` (2:0.2). Similarly, `"b"` is returned five times more likely than `"c"` (1:0.2). A value of `0` in the second array would result in the corresponding value in the first array to never be returned.
 
-The `weights` array can be shorter in length than `values`. If that's the case, the `weights` sequence is cycled through repeatedly and the numbers are matched to the `values` from left to right until all `values` have a probability value assigned. If `weights` is longer than the first array, excess values are just ignored.
+The `weights` array can be shorter in length than `values`. If that's the case, the `weights` sequence is cycled through repeatedly and matched to the `values` from left to right until all `values` have a weight value assigned. If `weights` is longer than the first array, excess values are ignored.
 
 > If `values` or `weights` are not arrays, `values` will be returned directly.
 
+> The `weights` array is not checked for negative values. Having negative values might create errors.
+
 ```javascript
 //return -1 or 1 equally, and rarely 0
-let direction = randomPick([-1,1,0], [1,1,0.01]);
+let direction = randomPick([-1, 1, 0], [1, 1, 0.01]);
 
 //get one of the angles from the list, but make multiples of 90° two times more likely
 let angle = randomPick([0, 45, 90, 135, 180, 225, 270, 315], [2, 1]);
