@@ -299,17 +299,24 @@ let color = coinTossWith("black", "white");
 
 let color = randomPick(["red", "green", "blue"]);
 ```
-### Switch cases
+### Random choices
 ```javascript
+if(coinToss()) {
+  //do this
+}
+else {
+  //do that
+}
+
 switch(randomInt(4)) {
   case 0:
-    //do something
+    //do this
   case 1:
-    //do something else
+    //or do that
   case 2:
     //or do this
   case 3:
-    //or this
+    //or that
 ```
 ### Align to grid
 ```javascript
