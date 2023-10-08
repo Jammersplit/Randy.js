@@ -7,7 +7,7 @@ A collection of primitive javascript functions for generating versatile random r
 
 The default random function in JavaScript generates values from 0 to 1. To make these values useful in your code, you often need to modify them. Mapping random results to another range is straightforward. But it can be less trivial to do more interesting things, like toggling events randomly, generating very specific random values, or using dynamic probabilities for random results. This collection contains a few fairly simple but handy random generator functions that might be a helpful starting point for creating more useful and interesting kinds of randomness. They might be used for generative or parametric design, to randomize decisions and options, or for when exceptions and outliers should be introduced more intentionally in a process.
 
-The functions are written in JavaScript and use the native `Math.random()` method, but should be easy to adapt to other languages. The functions work independently from each other and can be included individually. The functions don't do intensive checks of the input parameters, so might fail if unexpected values are passed.
+The functions are written in JavaScript and use the native `Math.random()` method, but should be easy to adapt to other languages. The functions work independently from each other and can be included individually.
 
 The functions are not bundled in a class. You can include the functions directly in your code or extend the native JavaScript `Math` class yourself.
 
@@ -113,7 +113,14 @@ Note that `maxNum` can be a float value and can also be negative.
 
 Optional second parameter `includeMax` to include `maxNum` in the results (`false` by default).
 
-> To be precise: As `maxNum` can be a float, `includeMax` will include the closest integer not smaller or larger than `maxNum` in the results. Effectively, this means `includeMax` only makes a difference if `maxNum` is exactly an integer. If `maxNum` is 2.4, the function will output 0, 1, or 2, regardless of `includeMax`. If `maxNum` is 3, the function will output 0, 1, or 2, but 3 only if `includeMax` is `true`.
+> To be precise: As `maxNum` can be a float, `includeMax` will include the closest integer not smaller or larger than `maxNum` in the results. Effectively, this means `includeMax` only makes a difference if `maxNum` is exactly an integer:
+```javascript
+randomInt(2.4)       //output: 0, 1, 2
+randomInt(2.4, true) //output: 0, 1, 2
+
+randomInt(3)         //output: 0, 1, 2
+randomInt(3, true)   //output: 0, 1, 2, 3
+```
 
 ```javascript
 //get a random array item
@@ -127,9 +134,9 @@ function randomIntBetween(minNum, maxNum, includeMax = false) { }
 
 Returns a random integer between `minNum` and `maxNum`, with `maxNum` not included by default.
 
-Compared to other common, simpler implementations for such a function, this one is the most flexible I could come up with:
+Compared to other common implementations for such a function that I found, this one is the most flexible I could come up with:
 * `minNum` and/or `maxNum` can be float values. They will be rounded to the closest integer within the interval between the values.
-* `minNum` and/or `maxNum` can be negative. Some other implementations incorrectly round negative float values.
+* `minNum` and/or `maxNum` can be negative. Some other implementations incorrectly round float values in negative ranges.
 * `maxNum` can be smaller than `minNum`.
 
 Optional third parameter `includeMax` to include `maxNum` in the results (`false` by default). This parameter always applies to `maxNum`, not the higher of the two input parameters.
@@ -138,18 +145,24 @@ Optional third parameter `includeMax` to include `maxNum` in the results (`false
 ```javascript
 randomIntBetween(-1.2, 2.6)       //output: -1, 0, 1, 2
 randomIntBetween(-1.2, 2.6, true) //output: -1, 0, 1, 2
+
+randomIntBetween(-1.2, 3)         //output: -1, 0, 1, 2
+randomIntBetween(-1.2, 3, true)   //output: -1, 0, 1, 2, 3
 ```
 
-> The order of `minNum` and `maxNum` implies the 'direction' from which the values are created, if you imagine a number line.
+> The order of `minNum` and `maxNum` implies the 'direction' from which the values are created, and which end is effected by `includeMax`:
 ```javascript
 randomIntBetween(1, 4) //output: 1, 2, 3
 randomIntBetween(4, 1) //output: 4, 3, 2
+
+randomIntBetween(1, 4, true) //output: 1, 2, 3, 4
+randomIntBetween(4, 1, true) //output: 4, 3, 2, 1
 ```
 
-> If `minNum` is a float value, it will not just be rounded to the closest integer, but the closest integer within the interval between the values.
+> If `minNum` is a float value, it will not just be rounded to the closest integer, but the closest integer within the range between the input values:
 ```javascript
-randomIntBetween(-1.5, -4.3) //output: -2, -3, -4
 randomIntBetween(-1.5, 2.5)  //output: -1, 0, 1, 2
+randomIntBetween(-1.5, -4.3) //output: -2, -3, -4
 ```
 
 ```javascript
