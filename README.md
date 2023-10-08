@@ -287,7 +287,10 @@ let pieAngles = randomSequence(5, 360);
 let result = randomPick([0, randomBetween(-1, 1)]);
 
 //return either a random low (0-0.1) or high value (0.9-1)
-randomPick(randomBetween(0, 0.1), randomBetween(0.9, 1));
+let edgeVal = randomPick(randomBetween(0, 0.1), randomBetween(0.9, 1));
+
+//get a random number of randomly sized sections for a pie chart
+let pieSections = randomSlices(randomIntBetween(2, 10), 360);
 ```
 ### Pick options to assign
 ```javascript
