@@ -247,6 +247,15 @@ function randomSlices(numberOfSlices = 1, sumOfSlices = 1, maxSpread = 1.0) { }
 ```
 
 Returns an array with length `numberOfSlices`, filled with random numbers that add up to `sumOfSlices`. Think of dividing a line with a length of sum into random sections.
+```
+                    sumOfSlices
+
+       ├───────────────────────────────────┤
+
+       ╰─┬─╯╰──┬──╯╰┬╯ ... ╰───────┬───────╯
+Array
+Index    0     1    2       numberOfSlices-1
+```
 
 `numberOfSlices` should be a positive integer. Float values will be rounded to the next lowest integer. If `numberOfSlices` is `1` (default), the function will return an array with a single value of `sumOfSlices`. If `numberOfSlices` is anything below `1`, the function will return an empty array.
 
@@ -269,6 +278,17 @@ function randomSequence(numberOfValues = 1, startValue = 0.0, endValue = 1.0, ma
 ```
 
 Returns an array with length `numberOfValues`, filled with an ordered sequence of values between `startValue` and `endValue`. Think of getting random points on a line from start to end.
+
+```
+    startValue                         endValue
+          
+       ├─╳─────╳────╳───────────────╳──────┤
+
+         ┊     ┊    ┊      ...      ┊
+Array
+Index    0     1    2        numberOfValues-1
+```
+
 
 `numberOfValues` should be a positive integer. Float values will be rounded to the next lowest integer. If `numberOfValues` is anything lower than `1`, the function returns an empty array. Default is `1`.
 
