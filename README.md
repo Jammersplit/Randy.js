@@ -246,7 +246,7 @@ let angle = randomPick([0, 45, 90, 135, 180, 225, 270, 315], [2, 1]);
 function randomSlices(numberOfSlices = 1, sumOfSlices = 1, maxSpread = 1.0) { }
 ```
 
-Returns an array with length `numberOfSlices`, filled with random numbers that add up to `sumOfSlices`. Think getting random sections of a line with a length of sum.
+Returns an array with length `numberOfSlices`, filled with random numbers that add up to `sumOfSlices`. Think of dividing a line with a length of sum into random sections.
 
 `numberOfSlices` should be a positive integer. Float values will be rounded to the next lowest integer. If `numberOfSlices` is `1` (default), the function will return an array with a single value of `sumOfSlices`. If `numberOfSlices` is anything below `1`, the function will return an empty array.
 
