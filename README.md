@@ -255,9 +255,8 @@ None of the values in the returned array will be `0` (except if `sumOfSlices` is
 > Due to rounding issues, the actual sum of the returned array values can be minimally higher or lower than the target sum.
 
 ```javascript
-//BETTER EXAMPLE
-//get a list of 100 random sections of the screen width
-let sections = randomSlices(100, width);
+//get a list of random angles to create a pie chart
+let pieSections = randomSlices(5, 360);
 ```
 
 ## randomSequence(*numberOfValues*, *startValue*, *endValue*, *maxSpread*)
@@ -276,6 +275,7 @@ Note that `startValue` and `endValue` will not be part of the returned array (ex
 Optional fourth parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all values in the returned array will be evenly apart, and `1` meaning the largest possible variance between values is allowed. Default value is `1`.
 
 ```javascript
+//OTHER EXAMPLE
 //get a list of random angles of a circle to draw a pie chart
 let pieAngles = randomSequence(5, 360);
 ```
