@@ -3,7 +3,7 @@
 
 
 # Randy.js
-A collection of primitive javascript functions for generating versatile random results.
+A collection of primitive JavaScript functions for generating versatile random results.
 
 The default random function in JavaScript generates values from 0 to 1. To make these values useful in your code, you often need to modify them. Mapping random results to another range is straightforward. But it can be less trivial to do more interesting things, like generating very specific random values or using dynamic probabilities for random results.
 
