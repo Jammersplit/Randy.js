@@ -19,7 +19,7 @@ The functions are not bundled in a class. You can include the functions directly
 * [coinTossWith(headsValue, tailsValue, *headsProbability*)](#cointosswithheadsvalue-tailsvalue-headsprobability)
 * [plusMinusOne(*plusProbability*)](#plusminusoneplusprobability)
 * [randomBetween(minNum, maxNum)](#randombetweenminnum-maxnum)
-* [randomStepBetween(minNum, maxNum, stepSize, *includeMax*)](#randomstepbetweenminnum-maxnum-stepsize-includemax)
+* [randomStepBetween(minNum, maxNum, *stepSize*, *includeMax*)](#randomstepbetweenminnum-maxnum-stepsize-includemax)
 * [randomInt(maxNum, *includeMax*)](#randomintmaxnum-includemax)
 * [randomIntBetween(minNum, maxNum, *includeMax*)](#randomintbetweenminnum-maxnum-includemax)
 * [diceRoll(*sides*)](#dicerollsides)
