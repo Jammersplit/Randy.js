@@ -282,6 +282,7 @@ Optional fourth parameter `maxSpread` controls how much difference is allowed am
 //get a list of random x-positions to draw letters of a word across the screen
 let text = "HELLO";
 let xPos = randomSequence(text.length, screenWidth);
+//…
 ```
 ---
 ## More Examples
