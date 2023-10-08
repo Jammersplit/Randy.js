@@ -5,7 +5,9 @@
 # Randy.js
 A collection of primitive javascript functions for generating versatile random results.
 
-The default random function in JavaScript generates values from 0 to 1. To make these values useful in your code, you often need to modify them. Mapping random results to another range is straightforward. But it can be less trivial to do more interesting things, like toggling events randomly, generating very specific random values, or using dynamic probabilities for random results. This collection contains a few fairly simple but handy random generator functions that might be a helpful starting point for creating more useful and interesting kinds of randomness. They might be used for generative or parametric design, to randomize decisions and options, or for when exceptions and outliers should be introduced more intentionally in a process.
+The default random function in JavaScript generates values from 0 to 1. To make these values useful in your code, you often need to modify them. Mapping random results to another range is straightforward. But it can be less trivial to do more interesting things, like generating very specific random values or using dynamic probabilities for random results.
+
+This collection contains a few fairly simple but handy random generator functions that might be a helpful starting point for creating more useful and interesting kinds of randomness. They might be used in generative or parametric design projects, to randomize decisions and options, or to intentionally introduce exceptions and outliers to a process.
 
 The functions are written in JavaScript and use the native `Math.random()` method, but should be easy to adapt to other languages. The functions work independently from each other and can be included individually.
 
@@ -15,6 +17,16 @@ The functions are not bundled in a class. You can include the functions directly
 
 * [coinToss(*trueProbability*)](#cointosstrueprobability)
 * [coinTossWith(headsValue, tailsValue, *headsProbability*)](#cointosswithheadsvalue-tailsvalue-headsprobability)
+* [plusMinusOne(*plusProbability*)](#plusminusoneplusprobability)
+* [randomBetween(minNum, maxNum)](#randombetweenminnum-maxnum)
+* [randomStepBetween(minNum, maxNum, stepSize, *includeMax*)](#randomstepbetweenminnum-maxnum-stepsize-includemax)
+* [randomInt(maxNum, *includeMax*)](#randomintmaxnum-includemax)
+* [randomIntBetween(minNum, maxNum, *includeMax*)](#randomintbetweenminnum-maxnum-includemax)
+* [diceRoll(*sides*)](#dicerollsides)
+* [randomPick(values, *weights*)](#randompickvalues-weights)
+* [randomSlices(numberOfSlices, *sumOfSlices*, *maxSpread*)](#randomslicesnumberofslices-sumofslices-maxspread)
+* [randomSequence(numberOfValues, *startValue*, *endValue*, *maxSpread*)](#randomsequencenumberofvalues-startvalue-endvalue-maxspread)
+* [More Examples](#more-examples)
 
 ## coinToss(*trueProbability*)
 ```javascript
