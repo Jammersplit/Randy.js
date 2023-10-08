@@ -1,5 +1,5 @@
 ![gradient5](https://github.com/Jammersplit/Randy.js/assets/16501077/e8fe35d0-c6c7-4f8b-8424-4a023f6dc963)
-> Cover image uses `coinToss()` to control color and size of circles with a varying probability depending on their x/y coordinates.
+> Cover image uses `coinToss()` to control color and size of dots with varying probability depending on their x/y coordinates.
 
 
 # Randy.js
@@ -7,7 +7,7 @@ A collection of primitive javascript functions for generating versatile random r
 
 The default random function in JavaScript generates values from 0 to 1. To make these values useful in your code, you often need to modify them. Mapping random results to another range is straightforward. But it can be less trivial to do more interesting things, like generating very specific random values or using dynamic probabilities for random results.
 
-This collection contains a few fairly simple but handy random generator functions that might be a helpful starting point for creating more useful and interesting kinds of randomness. They might be used in generative or parametric design projects, to randomize decisions and options, or to intentionally introduce exceptions and outliers to a process.
+This collection contains a few fairly simple but handy random generator functions that might be a helpful starting point for creating more useful and interesting kinds of randomness. They might be used in generative or parametric design projects, for game mechanics, to randomize decisions and options, or to intentionally introduce exceptions and outliers to a process.
 
 The functions are written in JavaScript and use the native `Math.random()` method, but should be easy to adapt to other languages. The functions work independently from each other and can be included individually.
 
@@ -87,7 +87,11 @@ let rotation = plusMinusOne() * 45;
 function randomBetween(minNum, maxNum) { }
 ```
 
-Returns a random float number between `minNum` and `maxNum`. Results can be equal to `minNum` but are always lower than `maxNum`. This is a basic function to map `Math.random()` to other ranges than 0–1.
+Returns a random float number between `minNum` and `maxNum`.
+
+`minNum` and/or `maxNum` can be negative. `minNum` doesn't need to be smaller than `maxNum`. Results can include `minNum` but never include `maxNum`.
+
+This is a basic function to map `Math.random()` to other ranges than 0–1.
 
 ```javascript
 //generate a random rotation angle
@@ -113,7 +117,7 @@ The optional fourth parameter `includeMax` controls if `maxNum` should be includ
 randomStepBetween(0, 1, 0.2, true) //output: 0, 0.2, 0.4, 0.6, 0.8, 1
 ```
 
-> Due to floating point tolerance issues in javascript, the actual return values can be minimally off the exact interval.
+> Due to floating point tolerance issues in JavaScript, the actual return values can be minimally off the exact interval.
 
 ```javascript
 //generate only odd random numbers (1, 3, 5, …, 99)
@@ -127,7 +131,7 @@ function randomInt(maxNum, includeMax = false) { }
 
 Returns a random integer between `0` and `maxNum`, with `maxNum` not included by default.
 
-Note that `maxNum` can be a float value and can also be negative.
+`maxNum` can be a float value and can also be negative.
 
 Optional second parameter `includeMax` to include `maxNum` in the results (`false` by default).
 
@@ -214,15 +218,15 @@ for(var i = 0; i < repetitions; i++) {
 function randomPick(values, weights = []) { }
 ```
 
-Returns a random value from a given array of possible `values`.
+Returns a random value from an array of possible `values`.
 
 Optional second parameter `weights` allows to pass an array of relative weights that are mapped as probabilities to the array of `values`. These should be non-negative numbers. Their relation defines the likelihood of the matching `values` to be returned.
 
 For instance, `randomPick(["a", "b", "c"], [2, 1, 0.2])` would return `"a"` two times more likely than `"b"` (2:1) and ten times more likely than `"c"` (2:0.2). Similarly, `"b"` is returned five times more likely than `"c"` (1:0.2). A value of `0` in the second array would result in the corresponding value in the first array to never be returned.
 
-The `weights` array can be shorter in length than `values`. If that's the case, the `weights` sequence is cycled through repeatedly and matched to the `values` from left to right until all `values` have a weight value assigned. If `weights` is longer than the first array, excess values are ignored.
+The `weights` array can be shorter in length than `values`. If that's the case, the `weights` sequence is cycled through repeatedly and matched to the `values` from left to right until all values in the first array have a weight assigned. If `weights` is longer than the first array, excess values are ignored.
 
-If the `weights` array is empty (default) or has only one value, each of the `values` are picked with the same propability.
+If the `weights` array is empty (default) or has only one value, each of the `values` are picked with the same probability.
 
 > If `values` or `weights` are not arrays, `values` will be returned directly.
 
@@ -242,7 +246,7 @@ let angle = randomPick([0, 45, 90, 135, 180, 225, 270, 315], [2, 1]);
 function randomSlices(numberOfSlices = 1, sumOfSlices = 1, maxSpread = 1.0) { }
 ```
 
-Returns an array with length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think getting random sections of a line with a length of sum.
+Returns an array with length `numberOfSlices`, filled with random numbers that add up to `sumOfSlices`. Think getting random sections of a line with a length of sum.
 
 `numberOfSlices` should be a positive integer. Float values will be rounded to the next lowest integer. If `numberOfSlices` is `1` (default), the function will return an array with a single value of `sumOfSlices`. If `numberOfSlices` is anything below `1`, the function will return an empty array.
 
@@ -275,9 +279,9 @@ Note that `startValue` and `endValue` will not be part of the returned array (ex
 Optional fourth parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all values in the returned array will be evenly apart, and `1` meaning the largest possible variance between values is allowed. Default value is `1`.
 
 ```javascript
-//OTHER EXAMPLE
-//get a list of random angles of a circle to draw a pie chart
-let pieAngles = randomSequence(5, 360);
+//get a list of random x-positions to draw letters of a word across the screen
+let text = "HELLO";
+let xPos = randomSequence(text.length, screenWidth);
 ```
 ---
 ## More Examples
@@ -320,13 +324,34 @@ switch(randomInt(4)) {
 ```
 ### Align to grid
 ```javascript
+//get a random position in a grid
 let gridSize = 5;
 let xPos = randomStepBetween(0, 100, gridSize);
 let yPos = randomStepBetween(0, 100, gridSize);
+//…
+
+//create a wobbly grid of items with random deviations from the regular grid positions
+let gridSize = 5;
+let deviation = 0.3;
+for(var x = 0; x < 10; x++) {
+  for(var y = 0; y < 10; y++) {
+    let xPos = x * gridSize + plusMinusOne() * randomBetween(0, deviation) * gridSize;
+    let yPos = y * gridSize + plusMinusOne() * randomBetween(0, deviation) * gridSize;
+    //…
+  }
+}
 ```
 ### Dynamic probabilities
 ```javascript
-//change probability color selection based on the pixel's x coordinate to create a noisy two-color gradient
+//reduce probability of something every time it is called
+var probability = 0.5;
+//…
+if(coinToss(probability)) {
+  //do something
+  probability *= 0.95;
+}
+
+//change probability of color selection based on the pixel's x coordinate to create a noisy two-color gradient
 for(var x = 0; x < width; x++) {
   for(var y = 0; y < height; y++) {
     pixels[x][y] = coinTossWith("black", "white", x / width);
