@@ -242,7 +242,7 @@ let angle = randomPick([0, 45, 90, 135, 180, 225, 270, 315], [2, 1]);
 function randomSlices(numberOfSlices, sumOfSlices = 1, maxSpread = 1.0) { }
 ```
 
-Returns an array with length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think getting random sections of a line with fixed length.
+Returns an array with length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think getting random sections of a line with a certain length.
 
 `sumOfSlices` can be any positive number. Default value of `sumOfSlices` is 1, meaning the sum of all values in the returned array will be 1.
 
@@ -264,7 +264,7 @@ let sections = randomSlices(100, width);
 function randomSequence(numberOfValues = 1, startValue = 0.0, endValue = 1.0, maxSpread = 1.0) { }
 ```
 
-Returns an array with length `numberOfValues`, filled with an ordered sequence of values between `startValue` and `endValue`. Think getting random points on a line with fixed length.
+Returns an array with length `numberOfValues`, filled with an ordered sequence of values between `startValue` and `endValue`. Think getting random points on a line from start to end.
 
 `startValue` and `endValue` can be any number, also negative numbers, and `startValue` doesn't have to be larger than `endValue`. Default range is `0` to `1` and one returned value. Thus without parameters, this works similar to the default random() function.
 
