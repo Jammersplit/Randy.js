@@ -24,7 +24,7 @@ The functions are not bundled in a class. You can include the functions directly
 * [randomIntBetween(minNum, maxNum, *includeMax*)](#randomintbetweenminnum-maxnum-includemax)
 * [diceRoll(*sides*)](#dicerollsides)
 * [randomPick(values, *weights*)](#randompickvalues-weights)
-* [randomSlices(*numberOfSlices*, *sumOfSlices*, *maxSpread*)](#randomslicesnumberofslices-sumofslices-maxspread)
+* [randomSlices(*numberOfSlices*, *sumOfSlices*, *maxSpread*, *minSlice*, *maxSlice*)](#randomslicesnumberofslices-sumofslices-maxspread-minslice-maxslice)
 * [randomSequence(*numberOfValues*, *startValue*, *endValue*, *maxSpread*)](#randomsequencenumberofvalues-startvalue-endvalue-maxspread)
 * [More Examples](#more-examples)
 
@@ -241,12 +241,12 @@ let angle = randomPick([0, 45, 90, 135, 180, 225, 270, 315], [2, 1]);
 ```
 
 ---
-## randomSlices(*numberOfSlices*, *sumOfSlices*, *maxSpread*)
+## randomSlices(*numberOfSlices*, *sumOfSlices*, *maxSpread*, *minSlice*, *maxSlice*)
 ```javascript
-function randomSlices(numberOfSlices = 1, sumOfSlices = 1, maxSpread = 1.0) { }
+function randomSlices(numberOfSlices = 1, sumOfSlices = 1, maxSpread = 1.0, minSlice = 0, maxSlice = Number.MAX_VALUE) { }
 ```
 
-Returns an array with length `numberOfSlices`, filled with random numbers that add up to `sumOfSlices`. Think of dividing a line with a length of sum into random sections.
+Returns an array with length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think of dividing a line with a length of sum into a number of random sections.
 ```
                     sumOfSlices
 
@@ -259,18 +259,31 @@ Index    0     1    2       numberOfSlices-1
 
 `numberOfSlices` should be a positive integer. Float values will be rounded to the next lowest integer. If `numberOfSlices` is `1` (default), the function will return an array with a single value of `sumOfSlices`. If `numberOfSlices` is anything below `1`, the function will return an empty array.
 
-`sumOfSlices` can be any number, also negative. Default value is `1`. A sum of `0` will lead to all values in the returned array being `0`.
+`sumOfSlices` should be a non-negative number. Negative values will be inverted. Default value is `1`. A sum of `0` will lead to all values in the returned array being `0`.
 
-Optional third parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all slices in the returned array will be identical, and `1` meaning the largest possible variance between slices is allowed. Default value is `1`.
+Optional third parameter `maxSpread` controls how much variance is allowed among the generated array values. That means how much they can deviate from the *mean value* (which is `sumOfSlices / numberOfSlices`). 
 
-None of the values in the returned array will be `0` (except if `sumOfSlices` is `0`).
+`maxSpread` expects a value from `0` to `1`, with `0` meaning all slices in the returned array will be identical, and `1` meaning the largest possible variance is allowed. Default value is `1`.
+
+Optional parameters `minSlice` and `maxSlice` allow to set lower/upper limits for the generated values, meaning the min/max size of the slices.
+
+`minSlice` should be lower or equal to the mean value and will be clipped if it's higher. Negative values will be interpreted as `0`.
+
+`maxSlice` should be larger or equal to the mean value and will be clipped if it's lower. Values higher than `sumOfSlices` have no effect.
+
+None of the values in the returned array will be `0` (except if `sumOfSlices` is `0`). All values will be positive.
 
 > Due to rounding issues, the actual sum of the returned array values can be minimally higher or lower than the target sum.
 
 ```javascript
 //get a list of random angles to create a pie chart
-let pieSections = randomSlices(5, 360);
+//the angles should be between 3 and 60 degrees
+let pieSections = randomSlices(5, 360, 1, 3, 60);
 ```
+
+> Notes on the algorithm:
+> The function fills the output array with random values one by one, each time removing the generated value from the target sum. For each value it makes sure to stay within the `minSlice` & `maxSlice` limits and that the leftover amount could be filled with the number of items left. The parameter `maxSpread` basically moves `minSlice` & `maxSlice` closer to the mean value.
+> The function shuffles the generated array at the end with the *Fisher-Yates algorithm*. The unshuffled array would have a bias towards larger values for the array items that are generated first.
 
 ## randomSequence(*numberOfValues*, *startValue*, *endValue*, *maxSpread*)
 ```javascript
