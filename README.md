@@ -276,7 +276,7 @@ None of the values in the returned array will be `0` (except if `sumOfSlices` is
 > Due to rounding issues, the actual sum of the returned array values can be minimally higher or lower than the target sum.
 
 ```javascript
-//get a list of random angles to create a pie chart
+//get a list of 5 random angles to create a pie chart
 //the angles should be between 3 and 60 degrees
 let pieSections = randomSlices(5, 360, 1, 3, 60);
 ```
