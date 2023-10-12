@@ -261,7 +261,7 @@ Index    0     1    2       numberOfSlices-1
 
 `sumOfSlices` should be a non-negative number. Negative values will be inverted. Default value is `1`. A sum of `0` will lead to all values in the returned array being `0`.
 
-Optional third parameter `maxSpread` controls how much variance is allowed among the generated array values. That means how much they can deviate from the *mean value* (which is `sumOfSlices / numberOfSlices`). 
+Optional parameter `maxSpread` controls how much variance is allowed among the generated array values. That means how much they can deviate from the *mean value* (which is `sumOfSlices / numberOfSlices`). 
 
 `maxSpread` expects a value from `0` to `1`, with `0` meaning all slices in the returned array will be identical, and `1` meaning the largest possible variance is allowed. Default value is `1`.
 
@@ -310,7 +310,17 @@ Index    0     1    2        numberOfValues-1
 
 Note that `startValue` and `endValue` will not be part of the returned array (except if they are identical).
 
-Optional fourth parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all values in the returned array will be evenly apart, and `1` meaning the largest possible variance between values is allowed. Default value is `1`.
+Optional parameter `maxSpread` controls how much variance is allowed for the distances between the generated array values.
+
+`maxSpread` expects a value from `0` to `1`, with `0` meaning all values in the returned array will be evenly apart, and `1` meaning the largest possible variance of distances between values is allowed. Default value is `1`.
+
+Optional parameters `minDist` and `maxDist` allow to set lower/upper limits for the distances between generated values. The values in the sequence will be at least `minDist` apart, the maximum distance between values is `maxDist`.
+
+`minDist` should be lower or equal to the mean value and will be clipped if it's higher. Negative values will be interpreted as `0`.
+
+`maxDist` should be larger or equal to the mean value and will be clipped if it's lower.
+
+The *mean value* is the distance between the points in the sequence if they would be evenly apart. It's the absolute (positive) difference between `startVal` and `endVal` divided by `numberOfValues + 1`. `randomSequence(4, 0, 10)` would have a mean value of `2`, for instance.
 
 ```javascript
 //get a list of random x-coordinates for drawing individual letters of a word across the screen
