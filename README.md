@@ -15,25 +15,28 @@ The functions are not bundled in a class. You can include the functions directly
 
 # Reference
 
-* [coinToss (*trueProbability*)](#cointosstrueprobability)
-* [coinTossWith (headsValue, tailsValue, *headsProbability*)](#cointosswithheadsvalue-tailsvalue-headsprobability)
-* [plusMinusOne (*plusProbability*)](#plusminusoneplusprobability)
-* [randomBetween (minNum, maxNum)](#randombetweenminnum-maxnum)
-* [randomStepBetween (minNum, maxNum, *stepSize*, *includeMax*)](#randomstepbetweenminnum-maxnum-stepsize-includemax)
-* [randomInt (maxNum, *includeMax*)](#randomintmaxnum-includemax)
-* [randomIntBetween (minNum, maxNum, *includeMax*)](#randomintbetweenminnum-maxnum-includemax)
-* [diceRoll (*sides*)](#dicerollsides)
-* [randomPick (values, *weights*)](#randompickvalues-weights)
-* [randomSlices (*numberOfSlices*, *sumOfSlices*, *maxSpread*, *minSlice*, *maxSlice*)](#randomslicesnumberofslices-sumofslices-maxspread-minslice-maxslice)
-* [randomSequence (*numberOfValues*, *startValue*, *endValue*, *maxSpread*, *minDist*, *maxDist*)](#randomsequencenumberofvalues-startvalue-endvalue-maxspread-minDist-maxDist)
-* [More Examples](#more-examples)
+* [**coinToss**(*trueProbability*)](#cointosstrueprobability)
+* [**coinTossWith**(headsValue, tailsValue, *headsProbability*)](#cointosswithheadsvalue-tailsvalue-headsprobability)
+* [**plusMinusOne**(*plusProbability*)](#plusminusoneplusprobability)
+* [**randomBetween**(minNum, maxNum)](#randombetweenminnum-maxnum)
+* [**randomStepBetween**(minNum, maxNum, *stepSize*, *includeMax*)](#randomstepbetweenminnum-maxnum-stepsize-includemax)
+* [**randomInt**(maxNum, *includeMax*)](#randomintmaxnum-includemax)
+* [**randomIntBetween**(minNum, maxNum, *includeMax*)](#randomintbetweenminnum-maxnum-includemax)
+* [**diceRoll**(*sides*)](#dicerollsides)
+* [**randomPick**(values, *weights*)](#randompickvalues-weights)
+* [**randomSlices**(*numberOfSlices*, *sumOfSlices*, *maxSpread*, *minSlice*, *maxSlice*)](#randomslicesnumberofslices-sumofslices-maxspread-minslice-maxslice)
+* [**randomSequence**(*numberOfValues*, *startValue*, *endValue*, *maxSpread*, *minDist*, *maxDist*)](#randomsequencenumberofvalues-startvalue-endvalue-maxspread-minDist-maxDist)
+
+[More Examples](#more-examples)
+
+---
 
 ## coinToss(*trueProbability*)
 ```javascript
 function coinToss(trueProbability = 0.5) { }
 ```
 
-Return either `true` or `false` randomly.
+Returns either `true` or `false` randomly.
 
 Optional parameter `trueProbability` to set likelihood of returning `true`. Expects a value from `0` to `1`. `0` never returns `true`, `1` always returns `true`. Defaults to `0.5`, meaning equal probability.
 
@@ -75,7 +78,7 @@ Returns either `1` or `-1` randomly. Identical to `coinTossWith(1, -1)`.
 
 Optional parameter `plusProbability` to set likelihood of returning positive `1`, analog to `coinToss()` above.
 
-Particularly helpful as a shorthand function for geometric operations, e.g. to flip or alternate orientations of some shape, axis, model etc.
+Particularly helpful as a shorthand function for geometric operations, e.g. to flip or alternate orientations or directions etc.
 
 ```javascript
 //set rotation angle to either 45° or -45°
@@ -87,11 +90,11 @@ let rotation = plusMinusOne() * 45;
 function randomBetween(minNum, maxNum) { }
 ```
 
-Returns a random float number between `minNum` and `maxNum`.
+Returns a random float number between `minNum` (inclusive) and `maxNum`.
 
-`minNum` and/or `maxNum` can be negative. `minNum` doesn't need to be smaller than `maxNum`. Results can include `minNum` but never include `maxNum`.
+`minNum` and `maxNum` can be negative. `maxNum` can be smaller than `minNum`.
 
-This is a basic function to map `Math.random()` to other ranges than 0–1.
+This is a basic function to map `Math.random()` to other ranges than `0–1`.
 
 ```javascript
 //generate a random rotation angle
@@ -103,16 +106,16 @@ let rotation = randomBetween(0, 360);
 function randomStepBetween(minNum, maxNum, stepSize = 0, includeMax = false) { }
 ```
 
-Returns a random float number between `minNum` and `maxNum`, but with the return values snapping to a fixed interval given by `stepSize`. The interval steps are always counted starting from `minNum` to `maxNum`.
+Returns a random float number between `minNum` (inclusive) and `maxNum` that is snapped to a fixed interval given by `stepSize`. The interval steps are always counted starting from `minNum` to `maxNum`.
 ```javascript
 randomStepBetween(0, 1, 0.2) //output: 0, 0.2, 0.4, 0.6, 0.8
 ```
 
-`minNum` and/or `maxNum` can be negative. `maxNum` can be smaller than `minNum`.
+`minNum` and `maxNum` can be negative. `maxNum` can be smaller than `minNum`.
 
-Optional parameter `stepSize` should be non-negative. Negative values will be inverted. The default is `0`, which would make the function behave like `randomBetween()`. A `stepSize` larger than the difference between the input numbers will always return `minNum`.
+Parameter `stepSize` should be non-negative. Negative values will be inverted. The default is `0`, which would make the function behave like `randomBetween()`. A `stepSize` larger than the difference between the input numbers will always return `minNum`.
 
-The optional fourth parameter `includeMax` controls if `maxNum` should be included in the results, if it fits the interval (`false` by default).
+The optional parameter `includeMax` controls whether `maxNum` is allowed as a result, if it matches the interval (`false` by default).
 ```javascript
 randomStepBetween(0, 1, 0.2, true) //output: 0, 0.2, 0.4, 0.6, 0.8, 1
 ```
@@ -129,13 +132,13 @@ let odd = randomBetween(1, 100, 2);
 function randomInt(maxNum, includeMax = false) { }
 ```
 
-Returns a random integer between `0` and `maxNum`, with `maxNum` not included by default.
+Returns a random integer between `0` (inclusive) and `maxNum`.
 
-`maxNum` can be a float value and can also be negative.
+`maxNum` can be a float value and can be negative.
 
-Optional second parameter `includeMax` to include `maxNum` in the results (`false` by default).
+Optional parameter `includeMax` controls whether `maxNum` is allowed as a result if it is an integer (`false` by default).
 
-> To be precise: As `maxNum` can be a float, `includeMax` will include the closest integer not smaller or larger than `maxNum` in the results. Effectively, this means `includeMax` only makes a difference if `maxNum` is exactly an integer:
+> As `maxNum` can be a float value, `includeMax` will include the closest integer not smaller or larger than `maxNum` in the results. Effectively, this means `includeMax` only makes a difference if `maxNum` is exactly an integer:
 ```javascript
 randomInt(2.4)       //output: 0, 1, 2
 randomInt(2.4, true) //output: 0, 1, 2
@@ -154,16 +157,20 @@ let item = myArray[randomInt(myArray.length)];
 function randomIntBetween(minNum, maxNum, includeMax = false) { }
 ```
 
-Returns a random integer between `minNum` and `maxNum`, with `maxNum` not included by default.
+Returns a random integer between `minNum` and `maxNum`.
 
 Compared to other common implementations for such a function that I found, this one is the most flexible I could come up with:
 * `minNum` and/or `maxNum` can be float values. They will be rounded to the closest integer within the interval between the values.
 * `minNum` and/or `maxNum` can be negative. Some other implementations incorrectly round float values in negative ranges.
 * `maxNum` can be smaller than `minNum`.
 
-Optional third parameter `includeMax` to include `maxNum` in the results (`false` by default). This parameter always applies to `maxNum`, not the higher of the two input parameters.
+`minNum` is included in the possible results if it is an integer.
 
-> To be precise again: As `maxNum` can be a float, `includeMax` will include the closest integer not smaller or larger than `maxNum` in the results. Effectively, this means `includeMax` only makes a difference if `maxNum` is exactly an integer. Analog to `randomInt()` above.
+Optional parameter `includeMax` controls whether `maxNum` is allowed as a result if it is an integer (`false` by default). This parameter always applies to `maxNum`, not the higher of the two input parameters.
+
+Returns `null` if no integer can be found in the given range.
+
+> As `maxNum` can be a float value, `includeMax` will include the closest integer not smaller or larger than `maxNum` in the results. Effectively, this means `includeMax` only makes a difference if `maxNum` is exactly an integer. Analog to `randomInt()` above.
 ```javascript
 randomIntBetween(-1.2, 2.6)       //output: -1, 0, 1, 2
 randomIntBetween(-1.2, 2.6, true) //output: -1, 0, 1, 2
@@ -181,7 +188,7 @@ randomIntBetween(1, 4, true) //output: 1, 2, 3, 4
 randomIntBetween(4, 1, true) //output: 4, 3, 2, 1
 ```
 
-> If `minNum` is a float value, it will not just be rounded to the closest integer, but the closest integer within the range between the input values:
+> If `minNum` or `maxNum` are float values, they are rounded correctly to the closest integer within the range between the input values:
 ```javascript
 randomIntBetween(-1.5, 2.5)  //output: -1, 0, 1, 2
 randomIntBetween(-1.5, -4.3) //output: -2, -3, -4
@@ -197,17 +204,17 @@ let angle = randomIntBetween(-30, 30, true);
 function function diceRoll(sides = 6) { }
 ```
 
-Returns a random integer from `1` up to the passed number of `sides`, including this number (`6` by default). Similar to `randomIntBetween(1, sides, true)`.
+Returns a random integer from `1` (inclusive) up to the passed number of `sides` (inclusive, `6` by default). Similar to `randomIntBetween(1, sides, true)`.
 
-`sides` should be a positive integer. Negative values will be inverted. Float values will then be rounded to the next lowest integer. When `sides` is `0` or rounded to `0`, the result will always be `1`.
+Parameter `sides` should be a positive integer. Negative values will be inverted. Float values will be rounded down. When `sides` is `0` or rounded to `0`, the result will always be `1`.
 
 > To do the same but include `0`, use `randomInt(sides, true)`. To make custom dice, use `randomPick([side1, side2, …])`.
 
 ```javascript
 //repeat something up to 10 times
-let repetitions = diceRoll(10);
+let numReps = diceRoll(10);
 
-for(var i = 0; i < repetitions; i++) {
+for(var i = 0; i < numReps; i++) {
   //…
 }
 ```
@@ -218,11 +225,15 @@ for(var i = 0; i < repetitions; i++) {
 function randomPick(values, weights = []) { }
 ```
 
-Returns a random value from an array of possible `values`.
+Returns a random value from an array of possible `values`, with option to assign probabilities for each value.
 
-Optional second parameter `weights` allows to pass an array of relative weights that are mapped as probabilities to the array of `values`. These should be non-negative numbers. Their relation defines the likelihood of the matching `values` to be returned.
+Parameter `values` should be an array with values of any type.
 
-For instance, `randomPick(["a", "b", "c"], [2, 1, 0.2])` would return `"a"` two times more likely than `"b"` (2:1) and ten times more likely than `"c"` (2:0.2). Similarly, `"b"` is returned five times more likely than `"c"` (1:0.2). A value of `0` in the second array would result in the corresponding value in the first array to never be returned.
+Optional parameter `weights` allows to pass an array of relative weights that are mapped as probabilities to the array of `values`. These should be non-negative numbers. Their relation defines the likelihood of the matching `values` to be returned.
+
+For instance, `randomPick(["a", "b", "c"], [2, 1, 0.2])` would return `"a"` two times more likely than `"b"` (2:1) and ten times more likely than `"c"` (2:0.2). Similarly, `"b"` is returned five times more likely than `"c"` (1:0.2).
+
+A value of `0` in the second array would result in the corresponding value in the first array to never be returned.
 
 The `weights` array can be shorter in length than `values`. If that's the case, the `weights` sequence is cycled through repeatedly and matched to the `values` from left to right until all values in the first array have a weight assigned. If `weights` is longer than the first array, excess values are ignored.
 
@@ -246,7 +257,7 @@ let angle = randomPick([0, 45, 90, 135, 180, 225, 270, 315], [2, 1]);
 function randomSlices(numberOfSlices = 1, sumOfSlices = 1, maxSpread = 1.0, minSlice = 0, maxSlice = Number.MAX_VALUE) { }
 ```
 
-Returns an array with length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think of dividing a line with a length of sum into a number of random sections.
+Returns an array with length `numberOfSlices`, filled with positive random numbers that add up to `sumOfSlices`. Think of dividing a line with a fixed length into a number of random sections.
 ```
                     sumOfSlices
 
