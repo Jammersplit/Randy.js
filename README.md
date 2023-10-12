@@ -257,7 +257,7 @@ Array
 Index    0     1    2       numberOfSlices-1
 ```
 
-`numberOfSlices` should be a positive integer. Float values will be rounded to the next lowest integer. If `numberOfSlices` is `1` (default), the function will return an array with a single value of `sumOfSlices`. If `numberOfSlices` is anything below `1`, the function will return an empty array.
+`numberOfSlices` should be a positive integer. Float values will be rounded down. If `numberOfSlices` is `1` (default), the function will return an array with a single value of `sumOfSlices`. If `numberOfSlices` is anything below `1`, the function will return an empty array.
 
 `sumOfSlices` should be a non-negative number. Negative values will be inverted. Default value is `1`. A sum of `0` will lead to all values in the returned array being `0`.
 
@@ -278,7 +278,7 @@ None of the values in the returned array will be `0` (except if `sumOfSlices` is
 ```javascript
 //get a list of 5 random angles to create a pie chart
 //the angles should be between 3 and 60 degrees
-let pieSections = randomSlices(5, 360, 1, 3, 60);
+let pieSlices = randomSlices(5, 360, 1, 3, 60);
 ```
 
 > Notes on the algorithm:
@@ -304,7 +304,7 @@ Index    0     1    2        numberOfValues-1
 ```
 
 
-`numberOfValues` should be a positive integer. Float values will be rounded to the next lowest integer. If `numberOfValues` is anything lower than `1`, the function returns an empty array. Default is `1`.
+`numberOfValues` should be a positive integer. Float values will be rounded down. If `numberOfValues` is anything lower than `1`, the function returns an empty array. Default is `1`.
 
 `startValue` and `endValue` can be any number, also negative numbers. `startValue` doesn't have to be smaller than `endValue`. Default range is `0` to `1`.
 
