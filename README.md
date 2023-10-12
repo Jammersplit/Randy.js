@@ -25,7 +25,7 @@ The functions are not bundled in a class. You can include the functions directly
 * [diceRoll(*sides*)](#dicerollsides)
 * [randomPick(values, *weights*)](#randompickvalues-weights)
 * [randomSlices(*numberOfSlices*, *sumOfSlices*, *maxSpread*, *minSlice*, *maxSlice*)](#randomslicesnumberofslices-sumofslices-maxspread-minslice-maxslice)
-* [randomSequence(*numberOfValues*, *startValue*, *endValue*, *maxSpread*)](#randomsequencenumberofvalues-startvalue-endvalue-maxspread)
+* [randomSequence(*numberOfValues*, *startValue*, *endValue*, *maxSpread*, *minDist*, *maxDist*)](#randomsequencenumberofvalues-startvalue-endvalue-maxspread-minDist-maxDist)
 * [More Examples](#more-examples)
 
 ## coinToss(*trueProbability*)
@@ -282,15 +282,16 @@ let pieSections = randomSlices(5, 360, 1, 3, 60);
 ```
 
 > Notes on the algorithm:
-> The function fills the output array with random values one by one, each time removing the generated value from the target sum. For each value it makes sure to stay within the `minSlice` & `maxSlice` limits and that the leftover amount could be filled with the number of items left. The parameter `maxSpread` basically moves `minSlice` & `maxSlice` closer to the mean value.
-> The function shuffles the generated array at the end with the *Fisher-Yates algorithm*. The unshuffled array would have a bias towards larger values for the array items that are generated first.
+> * The function fills the output array with random values one by one, each time removing the generated value from the target sum. For each value it makes sure to stay within the `minSlice` & `maxSlice` limits and that the leftover amount could be filled with the number of items left.
+> * The parameter `maxSpread` basically moves `minSlice` & `maxSlice` closer to the mean value.
+> * The function shuffles the generated array at the end with the *Fisher-Yates algorithm*. The unshuffled array would have a bias towards larger values for the array items that are generated first.
 
-## randomSequence(*numberOfValues*, *startValue*, *endValue*, *maxSpread*)
+## randomSequence(*numberOfValues*, *startValue*, *endValue*, *maxSpread*, *minDist*, *maxDist*)
 ```javascript
-function randomSequence(numberOfValues = 1, startValue = 0.0, endValue = 1.0, maxSpread = 1.0) { }
+function randomSequence(numberOfValues = 1, startValue = 0.0, endValue = 1.0, maxSpread = 1.0, minDist = 0, maxDist = Number.MAX_VALUE) { }
 ```
 
-Returns an array with length `numberOfValues`, filled with an ordered sequence of values between `startValue` and `endValue`. Think of getting random points on a line from start to end.
+Returns an array with length `numberOfValues`, filled with an ordered sequence of random values between `startValue` and `endValue`. Think of getting random points on a line from start to end.
 
 ```
     startValue                         endValue
@@ -312,11 +313,16 @@ Note that `startValue` and `endValue` will not be part of the returned array (ex
 Optional fourth parameter `maxSpread` controls how much difference is allowed among the generated array values. Expects a value from `0` to `1`, with `0` meaning all values in the returned array will be evenly apart, and `1` meaning the largest possible variance between values is allowed. Default value is `1`.
 
 ```javascript
-//get a list of random x-positions to draw letters of a word across the screen
-let text = "HELLO";
-let xPos = randomSequence(text.length, screenWidth);
+//get a list of random x-coordinates for drawing individual letters of a word across the screen
+//let the distances between the coordinates be at least 10 pixels and at max a third of the screen width
+let text = "RANDOM";
+let xPos = randomSequence(text.length, screenWidth, 1, 10, screenWidth / 3);
 //…
 ```
+
+> Notes on the algorithm:
+> * The function uses the same algorithm as `randomSlices()` above. This time the difference between `startValue` and `endValue` is divided into `numberOfValues+1` slices (because 3 points on a line create 4 sections, for instance). The size of the slices is then just added to `startValue` to create the sequence.
+> * Like `randomSlices()` it also shuffles the array values befor creating the ordered sequence.
 ---
 ## More Examples
 ### Combine random functions
