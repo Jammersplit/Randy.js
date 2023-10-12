@@ -15,17 +15,17 @@ The functions are not bundled in a class. You can include the functions directly
 
 # Reference
 
-* [coinToss(*trueProbability*)](#cointosstrueprobability)
-* [coinTossWith(headsValue, tailsValue, *headsProbability*)](#cointosswithheadsvalue-tailsvalue-headsprobability)
-* [plusMinusOne(*plusProbability*)](#plusminusoneplusprobability)
-* [randomBetween(minNum, maxNum)](#randombetweenminnum-maxnum)
-* [randomStepBetween(minNum, maxNum, *stepSize*, *includeMax*)](#randomstepbetweenminnum-maxnum-stepsize-includemax)
-* [randomInt(maxNum, *includeMax*)](#randomintmaxnum-includemax)
-* [randomIntBetween(minNum, maxNum, *includeMax*)](#randomintbetweenminnum-maxnum-includemax)
-* [diceRoll(*sides*)](#dicerollsides)
-* [randomPick(values, *weights*)](#randompickvalues-weights)
-* [randomSlices(*numberOfSlices*, *sumOfSlices*, *maxSpread*, *minSlice*, *maxSlice*)](#randomslicesnumberofslices-sumofslices-maxspread-minslice-maxslice)
-* [randomSequence(*numberOfValues*, *startValue*, *endValue*, *maxSpread*, *minDist*, *maxDist*)](#randomsequencenumberofvalues-startvalue-endvalue-maxspread-minDist-maxDist)
+* [coinToss (*trueProbability*)](#cointosstrueprobability)
+* [coinTossWith (headsValue, tailsValue, *headsProbability*)](#cointosswithheadsvalue-tailsvalue-headsprobability)
+* [plusMinusOne (*plusProbability*)](#plusminusoneplusprobability)
+* [randomBetween (minNum, maxNum)](#randombetweenminnum-maxnum)
+* [randomStepBetween (minNum, maxNum, *stepSize*, *includeMax*)](#randomstepbetweenminnum-maxnum-stepsize-includemax)
+* [randomInt (maxNum, *includeMax*)](#randomintmaxnum-includemax)
+* [randomIntBetween (minNum, maxNum, *includeMax*)](#randomintbetweenminnum-maxnum-includemax)
+* [diceRoll (*sides*)](#dicerollsides)
+* [randomPick (values, *weights*)](#randompickvalues-weights)
+* [randomSlices (*numberOfSlices*, *sumOfSlices*, *maxSpread*, *minSlice*, *maxSlice*)](#randomslicesnumberofslices-sumofslices-maxspread-minslice-maxslice)
+* [randomSequence (*numberOfValues*, *startValue*, *endValue*, *maxSpread*, *minDist*, *maxDist*)](#randomsequencenumberofvalues-startvalue-endvalue-maxspread-minDist-maxDist)
 * [More Examples](#more-examples)
 
 ## coinToss(*trueProbability*)
