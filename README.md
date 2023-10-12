@@ -272,7 +272,7 @@ Index    0     1    2       numberOfSlices-1
 
 `sumOfSlices` should be a non-negative number. Negative values will be inverted. Default value is `1`. A sum of `0` will lead to all values in the returned array being `0`.
 
-Optional parameter `maxSpread` controls how much variance is allowed among the generated array values. That means how much they can deviate from the *mean value*. The *mean value* is `sumOfSlices / numberOfSlices`, or the size the slices would have if they were all identical. 
+Optional parameter `maxSpread` controls how much variance is allowed among the generated array values. That means how much they can deviate from the *mean value*. The *mean value* is `sumOfSlices / numberOfSlices`, or the size of the slices if they would be all identical. 
 
 `maxSpread` expects a value from `0` to `1`, with `0` meaning all slices in the returned array will be identical, and `1` meaning the largest possible variance is allowed. Default value is `1`.
 
