@@ -320,9 +320,10 @@ Optional parameters `minDist` and `maxDist` allow to set lower/upper limits for 
 
 `maxDist` should be larger or equal to the mean value and will be clipped if it's lower.
 
-The *mean value* is the distance between the points in the sequence if they would be evenly apart. It's the absolute (positive) difference between `startVal` and `endVal` divided by `numberOfValues + 1`. `randomSequence(4, 0, 10)` would have a mean value of `2`, for instance.
+> The *mean value* is the distance between the points in the sequence if they would be evenly apart. It's the absolute (positive) difference between `startVal` and `endVal` divided by `numberOfValues + 1`. `randomSequence(4, 0, 10)` would have a mean value of `2`, for instance.
 
 ```javascript
+//EXAMPLE
 //get a list of random x-coordinates for drawing individual letters of a word across the screen
 //let the distances between the coordinates be at least 10 pixels and at max a third of the screen width
 let text = "RANDOM";
