@@ -302,7 +302,7 @@ let pieSlices = randomSlices(5, 360, 1, 3, 60);
 function randomSequence(numberOfValues = 1, startValue = 0.0, endValue = 1.0, maxSpread = 1.0, minDist = 0, maxDist = Number.MAX_VALUE) { }
 ```
 
-Returns an array with length `numberOfValues`, filled with an ordered sequence of random values between `startValue` and `endValue`. Think of getting random points on a line from start to end.
+Returns an array with length `numberOfValues`, filled with an ordered sequence of random values between `startValue` and `endValue`. Think of getting random points on a line between two points.
 
 ```
     startValue                         endValue
