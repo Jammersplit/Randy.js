@@ -275,16 +275,16 @@ None of the values in the returned array will be `0` (except if `sumOfSlices` is
 
 > Due to rounding issues, the actual sum of the returned array values can be minimally higher or lower than the target sum.
 
+> Notes on the algorithm:
+> * The function fills the output array with random values one by one, each time removing the generated value from the target sum. For each value it makes sure to stay within the `minSlice` & `maxSlice` limits and that the leftover amount could be filled with the number of items left.
+> * The parameter `maxSpread` basically moves `minSlice` & `maxSlice` closer to the mean value.
+> * The function shuffles the generated array at the end with the *Fisher-Yates algorithm*. The unshuffled array would have a bias towards larger values for the array items that are generated first.
+
 ```javascript
 //get a list of 5 random angles to create a pie chart
 //the angles should be between 3 and 60 degrees
 let pieSlices = randomSlices(5, 360, 1, 3, 60);
 ```
-
-> Notes on the algorithm:
-> * The function fills the output array with random values one by one, each time removing the generated value from the target sum. For each value it makes sure to stay within the `minSlice` & `maxSlice` limits and that the leftover amount could be filled with the number of items left.
-> * The parameter `maxSpread` basically moves `minSlice` & `maxSlice` closer to the mean value.
-> * The function shuffles the generated array at the end with the *Fisher-Yates algorithm*. The unshuffled array would have a bias towards larger values for the array items that are generated first.
 
 ## randomSequence(*numberOfValues*, *startValue*, *endValue*, *maxSpread*, *minDist*, *maxDist*)
 ```javascript
@@ -322,18 +322,17 @@ Optional parameters `minDist` and `maxDist` allow to set lower/upper limits for 
 
 > The *mean value* is the distance between the points in the sequence if they would be evenly apart. It's the absolute (positive) difference between `startVal` and `endVal` divided by `numberOfValues + 1`. `randomSequence(4, 0, 10)` would have a mean value of `2`, for instance.
 
+> Notes on the algorithm:
+> * The function uses the same algorithm as `randomSlices()` above. This time the difference between `startValue` and `endValue` is divided into `numberOfValues+1` slices (because 3 points on a line create 4 sections, for instance). The size of the slices is then just added to `startValue` to create the sequence.
+> * Like `randomSlices()` it also shuffles the array values befor creating the ordered sequence.
+
 ```javascript
-//EXAMPLE
 //get a list of random x-coordinates for drawing individual letters of a word across the screen
 //let the distances between the coordinates be at least 10 pixels and at max a third of the screen width
 let text = "RANDOM";
 let xPos = randomSequence(text.length, screenWidth, 1, 10, screenWidth / 3);
 //…
 ```
-
-> Notes on the algorithm:
-> * The function uses the same algorithm as `randomSlices()` above. This time the difference between `startValue` and `endValue` is divided into `numberOfValues+1` slices (because 3 points on a line create 4 sections, for instance). The size of the slices is then just added to `startValue` to create the sequence.
-> * Like `randomSlices()` it also shuffles the array values befor creating the ordered sequence.
 ---
 ## More Examples
 ### Combine random functions
