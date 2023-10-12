@@ -241,7 +241,7 @@ If the `weights` array is empty (default) or has only one value, each of the `va
 
 > If `values` or `weights` are not arrays, `values` will be returned directly.
 
-> The `weights` array is not checked for negative values. Having negative values might create errors.
+> The `weights` array is not checked for negative values. Having negative values might result in errors.
 
 ```javascript
 //return -1 or 1 equally, and rarely 0
@@ -272,15 +272,15 @@ Index    0     1    2       numberOfSlices-1
 
 `sumOfSlices` should be a non-negative number. Negative values will be inverted. Default value is `1`. A sum of `0` will lead to all values in the returned array being `0`.
 
-Optional parameter `maxSpread` controls how much variance is allowed among the generated array values. That means how much they can deviate from the *mean value* (which is `sumOfSlices / numberOfSlices`). 
+Optional parameter `maxSpread` controls how much variance is allowed among the generated array values. That means how much they can deviate from the *mean value*. The *mean value* is `sumOfSlices / numberOfSlices`, or the size the slices would have if they were all identical. 
 
 `maxSpread` expects a value from `0` to `1`, with `0` meaning all slices in the returned array will be identical, and `1` meaning the largest possible variance is allowed. Default value is `1`.
 
 Optional parameters `minSlice` and `maxSlice` allow to set lower/upper limits for the generated values, meaning the min/max size of the slices.
 
-`minSlice` should be lower or equal to the mean value and will be clipped if it's higher. Negative values will be interpreted as `0`.
+`minSlice` should be lower or equal to the *mean value* and will be clipped if it's higher. Negative values will be interpreted as `0`.
 
-`maxSlice` should be larger or equal to the mean value and will be clipped if it's lower. Values higher than `sumOfSlices` have no effect.
+`maxSlice` should be larger or equal to the *mean value* and will be clipped if it's lower.
 
 None of the values in the returned array will be `0` (except if `sumOfSlices` is `0`). All values will be positive.
 
