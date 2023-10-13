@@ -17,7 +17,7 @@ The functions are not bundled in a class. You can include the functions directly
 
 * [coinToss()](#cointosstrueprobability) – Returns true or false, with option to adjust probabilities.
 * [coinTossWith()](#cointosswithheadsvalue-tailsvalue-headsprobability) – Returns one of two values, with option to adjust probabilities.
-* [plusMinusOne(*plusProbability*)](#plusminusoneplusprobability) – Returns 1 or -1, with option to adjust probabilities.
+* [plusMinusOne()](#plusminusoneplusprobability) – Returns 1 or -1, with option to adjust probabilities.
 * [randomBetween()](#randombetweenminnum-maxnum) – Returns random value between two numbers.
 * [randomStepBetween()](#randomstepbetweenminnum-maxnum-stepsize-includemax) – Returns random value between two numbers, snapped to a fixed interval.
 * [randomInt()](#randomintmaxnum-includemax) – Returns random integer between 0 and a number.
