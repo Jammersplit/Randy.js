@@ -90,7 +90,7 @@ let rotation = plusMinusOne() * 45;
 function randomBetween(minNum, maxNum) { }
 ```
 
-Returns a random float number between `minNum` (inclusive) and `maxNum`.
+Returns a random float number between `minNum` (inclusive) and `maxNum` (exclusive).
 
 `minNum` and `maxNum` can be negative. `maxNum` can be smaller than `minNum`.
 
@@ -348,8 +348,8 @@ let xPos = randomSequence(text.length, screenWidth, 1, 10, screenWidth / 3);
 ## More Examples
 ### Combine random functions
 ```javascript
-//return either exactly 0 or a random value between -1 and 1
-let result = randomPick([0, randomBetween(-1, 1)]);
+//return either exactly 0 or a random value between -1 and 0 or 1 and 0
+let result = randomPick([0, randomBetween(-1, 0), randomBetween(1, 0)]);
 
 //return either a random low (0-0.1) or high value (0.9-1)
 let edgeVal = randomPick(randomBetween(0, 0.1), randomBetween(0.9, 1));
