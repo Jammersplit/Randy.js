@@ -15,17 +15,17 @@ The functions are not bundled in a class. You can include the functions directly
 
 # Reference
 
-* [**coinToss**(*trueProbability*)](#cointosstrueprobability)
-* [**coinTossWith**(headsValue, tailsValue, *headsProbability*)](#cointosswithheadsvalue-tailsvalue-headsprobability)
-* [**plusMinusOne**(*plusProbability*)](#plusminusoneplusprobability)
-* [**randomBetween**(minNum, maxNum)](#randombetweenminnum-maxnum)
-* [**randomStepBetween**(minNum, maxNum, *stepSize*, *includeMax*)](#randomstepbetweenminnum-maxnum-stepsize-includemax)
-* [**randomInt**(maxNum, *includeMax*)](#randomintmaxnum-includemax)
-* [**randomIntBetween**(minNum, maxNum, *includeMax*)](#randomintbetweenminnum-maxnum-includemax)
-* [**diceRoll**(*sides*)](#dicerollsides)
-* [**randomPick**(values, *weights*)](#randompickvalues-weights)
-* [**randomSlices**(*numberOfSlices*, *sumOfSlices*, *maxSpread*, *minSlice*, *maxSlice*)](#randomslicesnumberofslices-sumofslices-maxspread-minslice-maxslice)
-* [**randomSequence**(*numberOfValues*, *startValue*, *endValue*, *maxSpread*, *minDist*, *maxDist*)](#randomsequencenumberofvalues-startvalue-endvalue-maxspread-minDist-maxDist)
+* [coinToss()](#cointosstrueprobability) – Returns true or false, with option to adjust probabilities.
+* [coinTossWith()](#cointosswithheadsvalue-tailsvalue-headsprobability) – Returns one of two values, with option to adjust probabilities.
+* [plusMinusOne(*plusProbability*)](#plusminusoneplusprobability) – Returns 1 or -1, with option to adjust probabilities.
+* [randomBetween()](#randombetweenminnum-maxnum) – Returns random value between two numbers.
+* [randomStepBetween()](#randomstepbetweenminnum-maxnum-stepsize-includemax) – Returns random value between two numbers, snapped to a fixed interval.
+* [randomInt()](#randomintmaxnum-includemax) – Returns random integer between 0 and a number.
+* [randomIntBetween()](#randomintbetweenminnum-maxnum-includemax) – Returns random integer between two numbers.
+* [diceRoll()](#dicerollsides) – Returns random positive integer from 1 up to a number.
+* [randomPick()](#randompickvalues-weights) – Returns random value from an array, with option to set relative probabilities of values.
+* [randomSlices()](#randomslicesnumberofslices-sumofslices-maxspread-minslice-maxslice) – Returns a list of random numbers that add up to a given sum, with options to limit variance and size of values.
+* [randomSequence()](#randomsequencenumberofvalues-startvalue-endvalue-maxspread-mindist-maxdist) – Returns an ordered list of numbers between two numbers, with options to limit variance and distance of values.
 
 [More Examples](#more-examples)
 
