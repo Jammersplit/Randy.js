@@ -5,7 +5,7 @@
 # Randy.js
 A collection of primitive JavaScript functions for generating versatile random results.
 
-The default random function in JavaScript generates values from 0 to 1. To make these values useful in your code, you often need to modify them. Mapping random results to another range is straightforward. But it can be less trivial to do more interesting things, like generating very specific random values or using dynamic probabilities for random results.
+The default random function in JavaScript generates values from 0 to 1. To make these values useful for coding, you often need to modify them. Mapping random results to another range is straightforward. But it can be less trivial to do more interesting things, like generating very specific random values or using dynamic probabilities for random results.
 
 This collection contains a few fairly simple but handy random generator functions that might be a helpful starting point for creating more useful and interesting kinds of randomness. They might be used in generative or parametric design projects, for game mechanics, to randomize decisions and options, or to intentionally introduce exceptions and outliers to a process.
 
@@ -160,7 +160,7 @@ function randomIntBetween(minNum, maxNum, includeMax = false) { }
 Returns a random integer between `minNum` and `maxNum`.
 
 Compared to other common implementations for such a function that I found, this one is the most flexible I could come up with:
-* `minNum` and `maxNum` can be float values. They will be rounded to the closest integer within the interval between the values.
+* `minNum` and `maxNum` can be float values. They will be rounded correctly to the closest integer within the interval between the values (not only the closest integer).
 * `minNum` and `maxNum` can be negative. Some other implementations incorrectly round float values in negative ranges.
 * `maxNum` can be smaller than `minNum`.
 
@@ -325,13 +325,13 @@ Optional parameter `maxSpread` controls how much variance is allowed for the dis
 
 `maxSpread` expects a value from `0` to `1`, with `0` meaning all values in the returned array will be evenly apart, and `1` meaning the largest possible variance of distances between values is allowed. Default value is `1`.
 
-Optional parameters `minDist` and `maxDist` allow to set lower/upper limits for the distances between generated values. The values in the sequence will be at least `minDist` apart, the maximum distance between values is `maxDist`.
+Optional parameters `minDist` and `maxDist` allow to set lower/upper limits for the distances between generated values. The values in the sequence will be at least `minDist` apart, the maximum distance between values will be `maxDist`.
 
-`minDist` should be lower or equal to the mean value and will be clipped if it's higher. Negative values will be interpreted as `0`.
+`minDist` should be lower or equal to the *mean value* and will be clipped if it's higher. Negative values will be interpreted as `0`.
 
-`maxDist` should be larger or equal to the mean value and will be clipped if it's lower.
+`maxDist` should be higher or equal to the *mean value* and will be clipped if it's lower.
 
-> The *mean value* is the distance between the points in the sequence if they would be evenly apart. It's the absolute (positive) difference between `startVal` and `endVal` divided by `numberOfValues + 1`. `randomSequence(4, 0, 10)` would have a mean value of `2`, for instance.
+> The *mean value* is the distance between the points in the sequence if they would be evenly apart. It's the absolute (positive) difference between `startVal` and `endVal` divided by `numberOfValues + 1`. `randomSequence(4, 0, 10)` would have a *mean value* of `2`, for instance, as `4` points evenly spread between `0` and `10` would be `2` apart from each other and the boundaries.
 
 > Notes on the algorithm:
 > * The function uses the same algorithm as `randomSlices()` above. This time the difference between `startValue` and `endValue` is divided into `numberOfValues+1` slices (because 3 points on a line create 4 sections, for instance). The size of the slices is then just added to `startValue` to create the sequence.
@@ -412,7 +412,8 @@ if(coinToss(probability)) {
   probability *= 0.95;
 }
 
-//change probability of color selection based on the pixel's x coordinate to create a noisy two-color gradient
+//change probability of color selection based on pixel's x-coordinate
+//creates a noisy two-color gradient
 for(var x = 0; x < width; x++) {
   for(var y = 0; y < height; y++) {
     pixels[x][y] = coinTossWith("black", "white", x / width);
